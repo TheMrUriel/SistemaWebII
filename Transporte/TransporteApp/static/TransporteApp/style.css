@@ -1,0 +1,87 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;   
+}
+
+body {
+    background-color: #1C1C21;
+}
+
+/* ----------------------------------------------------------------------------------
+                                    
+                                    LOG IN
+
+------------------------------------------------------------------------------------- */
+.logo {
+    filter: drop-shadow(-2px 2px 15px rgba(255, 255, 255, 0.5));
+}
+
+.formulario_titulo {
+    color: #FAFAFA;
+}
+
+.input_titulo {
+    color: #FAFAFA;
+}
+
+.contenedor_formulario_titulo {
+    margin-bottom: 30px;
+}
+
+.input_contenido {
+    color: #D6D6DE;
+    background-color: #212429;
+    border: 2px solid #4F5461;
+    border-radius: 15px;
+    padding: 15px;
+    width: 50vh;
+}
+
+.input_contenido::placeholder {
+    color: #D6D6DE;
+    opacity: .5;
+}
+
+.enlace_contrasena {
+    text-decoration: none;
+    color: #D6D6DE;
+}
+
+.boton_login {
+    color: #FAFAFA;
+    background-color: #617AFA;
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    font-weight: 700;
+    width: 50vh;
+}
+
+.boton_signup {
+    color: #FAFAFA;
+    background-color: #586088;
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    font-weight: 700;
+    width: 50vh;
+}
+
+.contenedor_formulario_inputs {
+    margin-bottom: 10px;
+    
+}
+
+.contenedor_input_contenido {
+    margin-top: 10px;
+}
+
+.contenedor_formulario_titulo {
+    text-align: center;
+}
+
+.contenedor_principal {
+    height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}

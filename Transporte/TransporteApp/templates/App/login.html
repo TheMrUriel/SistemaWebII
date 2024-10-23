@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {%load static%}
+        <link rel="stylesheet" href="{% static 'TransporteApp/style.css' %}" />
+        <title>Log In</title>
+    </head>
+
+    <body>
+        <section class="contenedor_principal">
+            <div class="contenedor_logo">
+                <img src="{% static 'TransporteApp/logo.png' %}" class="logo" alt="logo de la empresa">
+            </div>
+
+            <div class="contenedor_formulario">
+                <div class="contenedor_formulario_titulo">
+                    <h2 class="formulario_titulo">Welcome Back</h2>
+                </div>
+                <div class="contenedor_formulario_cuerpo">
+                    <form action="#" method="post">
+                        <div class="contenedor_formulario_inputs">
+                            <label for="username">
+                                <span class="input_titulo">
+                                    Username
+                                </span>
+                            </label>
+                            <div class="contenedor_input_contenido">
+                                <input type="text" class="input_contenido" id="username" placeholder="Username">
+                            </div>
+                        </div>
+                        <div class="contenedor_formulario_inputs">
+                            <label for="password">
+                                <span class="input_titulo">
+                                    Password
+                                </span>
+                            </label>
+                            <div class="contenedor_input_contenido">
+                                <input type="password" class="input_contenido" id="password" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="contenedor_formulario_inputs">
+                            <input type="checkbox" id="remember_me">
+                            <label for="remember_me">
+                                <span class="input_titulo">
+                                    Remember Me
+                                </span>
+                            </label>
+                        </div>
+                        <div class="contenedor_formulario_inputs">
+                            <div class="contenedor_enlace_contrasena">
+                                <a href="#" class="enlace_contrasena">Forgot Password?</a>
+                            </div>
+                        </div>
+                        <div class="contenedor_formulario_inputs">
+                            <div class="contenedor_boton_login">
+                                <button type="submit" class="boton_login">Log In</button>
+                            </div>
+                        </div>
+                        <div class="contenedor_formulario_inputs">
+                            <div class="contenedor_boton_signup">
+                                <button type="submit" class="boton_signup">Sign Up</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
+
