@@ -166,3 +166,53 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+
+/* ----------------------------------------------------------------------------------
+                                    
+                            CHOFER - SUBIR EVIDENCIA
+
+------------------------------------------------------------------------------------- */
+.evidencia_titulo {
+    color: #FAFAFA;
+}
+
+.evidencia_contenedor_titulo {
+    display: flex;
+    justify-content: center;
+}
+
+.evidencia_contenedor_contenido {
+    height: 80vh;
+    background-color: #212429;
+    border: 2px solid #4F5461;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.boton_enviar {
+    color: #FAFAFA;
+    background-color: #FAD34A;
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    font-weight: 700;
+    width: 55vh;
+}
+
+.boton_regresar {
+    text-decoration: none;
+    color: #FAFAFA;
+    background-color: #586088;
+    border: none;
+    border-radius: 15px;
+    font-weight: 700;
+    padding: 15px 21vh;
+}
+
+.evidencia_contenedor_formulario {
+    display: flex;
+    align-items: end;
+    margin-bottom: 2%;
+}

@@ -15,3 +15,6 @@ def sign_up(request):
 # - Chofer
 def reportes(request):
     return render(request, 'App/chofer_reporte.html')
+
+def evidencia(request):
+    return render(request, 'App/chofer_evidencia.html')
