@@ -11,3 +11,7 @@ def log_in(request):
 
 def sign_up(request):
     return render(request, 'App/signup.html')
+
+# - Chofer
+def reportes(request):
+    return render(request, 'App/chofer_reporte.html')

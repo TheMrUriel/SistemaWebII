@@ -6,6 +6,7 @@ body {
     background-color: #1C1C21;
 }
 
+
 /* ----------------------------------------------------------------------------------
                                     
                         INICIAR SESION  /   REGISTRARSE
@@ -53,17 +54,21 @@ body {
     border: none;
     border-radius: 15px;
     font-weight: 700;
-    width: 50vh;
+    width: 55vh;
 }
 
 .boton_signup {
+    text-decoration: none;
     color: #FAFAFA;
     background-color: #586088;
-    padding: 15px;
     border: none;
     border-radius: 15px;
     font-weight: 700;
-    width: 50vh;
+    padding: 15px 21vh;
+}
+
+.contenedor_boton_signup {
+    margin-top: 30px;
 }
 
 .contenedor_formulario_inputs {
@@ -84,4 +89,80 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+}
+
+
+/* ----------------------------------------------------------------------------------
+                                    
+                            CHOFER - CREAR REPORTE
+
+------------------------------------------------------------------------------------- */
+.reportes_formulario_titulo {
+    color: #FAFAFA;
+}
+
+.reportes_input_titulo {
+    color: #FAFAFA;
+}
+
+.reportes_contenedor_formulario_titulo {
+    margin-bottom: 30px;
+}
+
+.reportes_input_contenido {
+    color: #D6D6DE;
+    background-color: #212429;
+    border: 2px solid #4F5461;
+    border-radius: 15px;
+    padding: 15px ;
+    width: 145vh;
+}
+
+.reportes_input_contenido::placeholder {
+    color: #D6D6DE;
+    opacity: .5;
+}
+
+.reportes_textarea::placeholder {
+    color: #D6D6DE;
+    opacity: .5;
+}
+
+.reportes_textarea {
+    color: #D6D6DE;
+    background-color: #212429;
+    border: 2px solid #4F5461;
+    border-radius: 15px;
+    width: 150vh;
+}
+
+.reportes_boton_submit {
+    text-decoration: none;
+    color: #FAFAFA;
+    background-color: #586088;
+    border: none;
+    border-radius: 15px;
+    font-weight: 700;
+    padding: 15px 72vh;
+    margin-top: 10px;
+}
+
+.reportes_contenedor_formulario_inputs {
+    margin-bottom: 10px;
+    
+}
+
+.reportes_contenedor_input_contenido {
+    margin-top: 10px;
+}
+
+.reportes_contenedor_formulario_titulo {
+    text-align: center;
+}
+
+.reportes_contenedor_principal {
+    height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
