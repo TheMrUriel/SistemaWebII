@@ -1,0 +1,32 @@
+{% extends 'conex/Encabezado.html' %}
+{% block content %}
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Inicio</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'TransporteApp/style.css'%}" />
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+  <div>
+    <h1>BD</h1>
+    {% if ultimo_viaje %}
+      <p>Fecha: {{ ultimo_viaje.fecha }}</p>
+      <p># Carta porte: {{ ultimo_viaje.cporte }}</p>
+      <p>Chofer: {{ ultimo_viaje.chofer }}</p>
+      <p>Unidad: {{ ultimo_viaje.unidad }}</p>
+      <p>Cliente: {{ ultimo_viaje.cliente }}</p>
+      <p>Sello: {{ ultimo_viaje.sello }}</p>
+      <p>Origen: {{ ultimo_viaje.origen }}</p>
+      <p>Destino: {{ ultimo_viaje.destino }}</p>
+      <p>Hora de salida: {{ ultimo_viaje.hsalida }}</p>
+      <p>Fecha y hora de llegada: {{ ultimo_viaje.horallegada }}</p>
+      <p>Estatus: {{ ultimo_viaje.estatus }}</p>
+      {% else %}
+      <p>No hay viajes registrados.</p>
+  {% endif %}
+  </div>
+</body>
+{% endblock %}
