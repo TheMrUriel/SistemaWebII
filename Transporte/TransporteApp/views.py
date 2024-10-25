@@ -18,6 +18,11 @@ def reportes(request):
 def evidencia(request):
     return render(request, 'App/chofer_evidencia.html')
 
+# - Monitorista
+def viaje_info(request):
+    return render(request, 'App/monitorista_info_viaje.html')
+
+# - Base de datos
 def bd(request):
     db = firestore.client()
     viajes_ref = db.collection('viajes')  # Referencia a la colección "viajes"

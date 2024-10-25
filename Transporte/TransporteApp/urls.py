@@ -9,7 +9,8 @@ urlpatterns = [
 
     # - Chofer
     path('reportes/', views.reportes, name = 'reportes'),
-    path('evidencia/', views.evidencia, name = 'evidencia')
+    path('evidencia/', views.evidencia, name = 'evidencia'),
 
     # - Monitorista
+    path('informacion/', views.viaje_info, name = 'informacion')
 ]

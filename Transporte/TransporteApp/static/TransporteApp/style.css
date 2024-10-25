@@ -184,11 +184,13 @@ body {
 
 .evidencia_contenedor_contenido {
     height: 80vh;
+    width: 80%;
     background-color: #212429;
     border: 2px solid #4F5461;
     border-radius: 15px;
     display: flex;
     justify-content: center;
+    margin: auto;
 }
 
 .boton_enviar {
@@ -215,4 +217,58 @@ body {
     display: flex;
     align-items: end;
     margin-bottom: 2%;
+}
+
+
+/* ----------------------------------------------------------------------------------
+                                    
+                        MONITARISTA - MONITOREO DE VIAJE
+
+------------------------------------------------------------------------------------- */
+.monitoreo_titulo {
+    color: #FAFAFA;
+}
+
+p {
+    color: #FAFAFA;
+}
+
+.monitoreo_contenedor_titulo {
+    display: flex;
+    justify-content: center;
+}
+
+.monitoreo_contenedor_contenido {
+    height: 80vh;
+    width: 80%;
+    background-color: #212429;
+    border: 2px solid #4F5461;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.boton_tiempo {
+    text-decoration: none;
+    color: #FAFAFA;
+    background-color: #FAD34A;
+    border: none;
+    border-radius: 15px;
+    font-weight: 700;
+    padding: 15px 21vh;
+}
+
+.monitoreo_contenedor_informacion {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 80%;
+}
+
+.monitoreo_contenedor_botones {
+    display: flex;
+    align-items: end;
+    justify-content: space-evenly;
+    margin-top: 1%;
 }
