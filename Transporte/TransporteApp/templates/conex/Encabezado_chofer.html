@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Transportes Vargas</title>
-    {%load static%}
+    {% load static %}
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -11,6 +11,16 @@
       rel="stylesheet"
     />
     <style>
+      body {
+        padding-top: 70px; /* Compensa la altura de la barra fija */
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+      a:hover {
+        color: #e0e0e0;
+      }
       .navbar-brand img {
         height: 40px;
       }
@@ -36,7 +46,7 @@
       }
       @media (min-width: 992px) {
         .navbar-nav {
-          margin-left: auto;
+          margin-left: 0;
         }
       }
       @media (max-width: 425px) {
@@ -52,9 +62,11 @@
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark">
+      <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-          <h4 style="color: #ffffff">Transportes Vargas</h4>
+          <h4 style="color: #ffffff">
+            <a href="/home/">Transportes Vargas</a>
+          </h4>
           <button
             class="navbar-toggler"
             type="button"
@@ -67,15 +79,15 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Asignación</a>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item ms-3">
+                <a class="nav-link" href="#">Viajes Disponibles</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Estado de viajes</a>
+              <li class="nav-item ms-3">
+                <a class="nav-link" href="/reportes/">Reportar Viajes</a>
               </li>
             </ul>
-            <button class="btn btn-login" type="button">Log Out</button>
+            <button class="btn btn-login ms-3" type="button">Log Out</button>
           </div>
         </div>
       </nav>

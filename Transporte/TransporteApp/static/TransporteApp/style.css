@@ -1,11 +1,10 @@
 * {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;   
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: #1C1C21;
+  background-color: #1c1c21;
 }
-
 
 /* ----------------------------------------------------------------------------------
                                     
@@ -13,84 +12,82 @@ body {
 
 ------------------------------------------------------------------------------------- */
 .logo {
-    filter: drop-shadow(-2px 2px 15px rgba(255, 255, 255, 0.5));
+  filter: drop-shadow(-2px 2px 15px rgba(255, 255, 255, 0.5));
 }
 
 .formulario_titulo {
-    color: #FAFAFA;
+  color: #fafafa;
 }
 
 .input_titulo {
-    color: #FAFAFA;
+  color: #fafafa;
 }
 
 .contenedor_formulario_titulo {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .input_contenido {
-    color: #D6D6DE;
-    background-color: #212429;
-    border: 2px solid #4F5461;
-    border-radius: 15px;
-    padding: 15px;
-    width: 50vh;
+  color: #d6d6de;
+  background-color: #212429;
+  border: 2px solid #4f5461;
+  border-radius: 15px;
+  padding: 15px;
+  width: 50vh;
 }
 
 .input_contenido::placeholder {
-    color: #D6D6DE;
-    opacity: .5;
+  color: #d6d6de;
+  opacity: 0.5;
 }
 
 .enlace_contrasena {
-    text-decoration: none;
-    color: #D6D6DE;
+  text-decoration: none;
+  color: #d6d6de;
 }
 
 .boton_login {
-    color: #FAFAFA;
-    background-color: #617AFA;
-    padding: 15px;
-    border: none;
-    border-radius: 15px;
-    font-weight: 700;
-    width: 55vh;
+  color: #fafafa;
+  background-color: #617afa;
+  padding: 15px;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  width: 55vh;
 }
 
 .boton_signup {
-    text-decoration: none;
-    color: #FAFAFA;
-    background-color: #586088;
-    border: none;
-    border-radius: 15px;
-    font-weight: 700;
-    padding: 15px 21vh;
+  text-decoration: none;
+  color: #fafafa;
+  background-color: #586088;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  padding: 15px 21vh;
 }
 
 .contenedor_boton_signup {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 
 .contenedor_formulario_inputs {
-    margin-bottom: 10px;
-    
+  margin-bottom: 10px;
 }
 
 .contenedor_input_contenido {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .contenedor_formulario_titulo {
-    text-align: center;
+  text-align: center;
 }
 
 .contenedor_principal {
-    height: 95vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+  height: 95vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
-
 
 /* ----------------------------------------------------------------------------------
                                     
@@ -98,75 +95,73 @@ body {
 
 ------------------------------------------------------------------------------------- */
 .reportes_formulario_titulo {
-    color: #FAFAFA;
+  color: #fafafa;
 }
 
 .reportes_input_titulo {
-    color: #FAFAFA;
+  color: #fafafa;
 }
 
 .reportes_contenedor_formulario_titulo {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 
 .reportes_input_contenido {
-    color: #D6D6DE;
-    background-color: #212429;
-    border: 2px solid #4F5461;
-    border-radius: 15px;
-    padding: 15px ;
-    width: 145vh;
+  color: #d6d6de;
+  background-color: #212429;
+  border: 2px solid #4f5461;
+  border-radius: 15px;
+  padding: 15px;
+  width: 145vh;
 }
 
 .reportes_input_contenido::placeholder {
-    color: #D6D6DE;
-    opacity: .5;
+  color: #d6d6de;
+  opacity: 0.5;
 }
 
 .reportes_textarea::placeholder {
-    color: #D6D6DE;
-    opacity: .5;
+  color: #d6d6de;
+  opacity: 0.5;
 }
 
 .reportes_textarea {
-    color: #D6D6DE;
-    background-color: #212429;
-    border: 2px solid #4F5461;
-    border-radius: 15px;
-    width: 150vh;
+  color: #d6d6de;
+  background-color: #212429;
+  border: 2px solid #4f5461;
+  border-radius: 15px;
+  width: 150vh;
 }
 
 .reportes_boton_submit {
-    text-decoration: none;
-    color: #FAFAFA;
-    background-color: #586088;
-    border: none;
-    border-radius: 15px;
-    font-weight: 700;
-    padding: 15px 72vh;
-    margin-top: 10px;
+  text-decoration: none;
+  color: #fafafa;
+  background-color: #586088;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  padding: 15px 72vh;
+  margin-top: 10px;
 }
 
 .reportes_contenedor_formulario_inputs {
-    margin-bottom: 10px;
-    
+  margin-bottom: 10px;
 }
 
 .reportes_contenedor_input_contenido {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .reportes_contenedor_formulario_titulo {
-    text-align: center;
+  text-align: center;
 }
 
 .reportes_contenedor_principal {
-    height: 95vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
 
 /* ----------------------------------------------------------------------------------
                                     
@@ -174,51 +169,50 @@ body {
 
 ------------------------------------------------------------------------------------- */
 .evidencia_titulo {
-    color: #FAFAFA;
+  color: #fafafa;
 }
 
 .evidencia_contenedor_titulo {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .evidencia_contenedor_contenido {
-    height: 80vh;
-    width: 80%;
-    background-color: #212429;
-    border: 2px solid #4F5461;
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    margin: auto;
+  height: 80vh;
+  width: 80%;
+  background-color: #212429;
+  border: 2px solid #4f5461;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
 }
 
 .boton_enviar {
-    color: #FAFAFA;
-    background-color: #FAD34A;
-    padding: 15px;
-    border: none;
-    border-radius: 15px;
-    font-weight: 700;
-    width: 55vh;
+  color: #fafafa;
+  background-color: #fad34a;
+  padding: 15px;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  width: 55vh;
 }
 
 .boton_regresar {
-    text-decoration: none;
-    color: #FAFAFA;
-    background-color: #586088;
-    border: none;
-    border-radius: 15px;
-    font-weight: 700;
-    padding: 15px 21vh;
+  text-decoration: none;
+  color: #fafafa;
+  background-color: #586088;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  padding: 15px 21vh;
 }
 
 .evidencia_contenedor_formulario {
-    display: flex;
-    align-items: end;
-    margin-bottom: 2%;
+  display: flex;
+  align-items: end;
+  margin-bottom: 2%;
 }
-
 
 /* ----------------------------------------------------------------------------------
                                     
@@ -226,49 +220,49 @@ body {
 
 ------------------------------------------------------------------------------------- */
 .monitoreo_titulo {
-    color: #FAFAFA;
+  color: #fafafa;
 }
 
 p {
-    color: #FAFAFA;
+  color: #fafafa;
 }
 
 .monitoreo_contenedor_titulo {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .monitoreo_contenedor_contenido {
-    height: 80vh;
-    width: 80%;
-    background-color: #212429;
-    border: 2px solid #4F5461;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    margin: auto;
+  height: 80vh;
+  width: 80%;
+  background-color: #212429;
+  border: 2px solid #4f5461;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
 }
 
 .boton_tiempo {
-    text-decoration: none;
-    color: #FAFAFA;
-    background-color: #FAD34A;
-    border: none;
-    border-radius: 15px;
-    font-weight: 700;
-    padding: 15px 21vh;
+  text-decoration: none;
+  color: #fafafa;
+  background-color: #fad34a;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  padding: 15px 21vh;
 }
 
 .monitoreo_contenedor_informacion {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 80%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 80%;
 }
 
 .monitoreo_contenedor_botones {
-    display: flex;
-    align-items: end;
-    justify-content: space-evenly;
-    margin-top: 1%;
+  display: flex;
+  align-items: end;
+  justify-content: space-evenly;
+  margin-top: 1%;
 }
