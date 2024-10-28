@@ -214,6 +214,70 @@ body {
   margin-bottom: 2%;
 }
 
+
+/* ----------------------------------------------------------------------------------
+                                    
+                        MONITARISTA - ASIGNAR VIAJE
+
+------------------------------------------------------------------------------------- */
+.asignar_titulo {
+  color: #fafafa;
+}
+
+.asignar_titulo_input {
+  color: #fafafa;
+}
+
+.asignar_contenedor_titulo {
+  margin-bottom: 30px;
+}
+
+.asignar_input {
+  color: #d6d6de;
+  background-color: #212429;
+  border: 2px solid #4f5461;
+  border-radius: 15px;
+  padding: 15px;
+  width: 145vh;
+}
+
+.asignar_input::placeholder {
+  color: #d6d6de;
+  opacity: 0.5;
+}
+
+.boton_asignacion {
+  color: #fafafa;
+  background-color: #586088;
+  padding: 15px;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  width: 55vh;
+}
+
+.asignar_contenedor_formulario_inputs {
+  margin-bottom: 10px;
+}
+
+.asignar_contenedor_input {
+  margin-top: 10px;
+}
+
+.asignar_contenedor_titulo {
+  text-align: center;
+}
+
+.asignar_contenedor_contenido {
+  display: flex;
+  justify-content: center;
+}
+
+.contenedor_boton_asignacion {
+  text-align: center;
+}
+
+
 /* ----------------------------------------------------------------------------------
                                     
                         MONITARISTA - MONITOREO DE VIAJE
@@ -230,6 +294,7 @@ p {
 .monitoreo_contenedor_titulo {
   display: flex;
   justify-content: center;
+  margin-bottom: 30px;
 }
 
 .monitoreo_contenedor_contenido {
@@ -266,3 +331,5 @@ p {
   justify-content: space-evenly;
   margin-top: 1%;
 }
+
+

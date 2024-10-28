@@ -22,6 +22,9 @@ def evidencia(request):
 def viaje_info(request):
     return render(request, 'App/monitorista_info_viaje.html')
 
+def asignar_viaje(request):
+    return render(request, 'App/monitorista_asignacion.html')
+
 # - Base de datos
 def bd(request):
     db = firestore.client()

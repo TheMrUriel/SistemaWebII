@@ -12,5 +12,6 @@ urlpatterns = [
     path('evidencia/', views.evidencia, name = 'evidencia'),
 
     # - Monitorista
-    path('informacion/', views.viaje_info, name = 'informacion')
+    path('informacion/', views.viaje_info, name = 'informacion'),
+    path('asignacion/', views.asignar_viaje, name = 'asignacion')
 ]
