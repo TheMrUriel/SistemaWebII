@@ -1,77 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        {%load static%}
-        <link rel="stylesheet" href="{% static 'TransporteApp/style.css' %}" />
-        <title>Registrarse</title>
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'TransporteApp/style.css' %}" />
+    <title>Registrarse</title>
+  </head>
 
-    <body>
-        <section class="contenedor_principal">
-            <div class="contenedor_formulario">
-                <div class="contenedor_formulario_titulo">
-                    <h2 class="formulario_titulo">Nuevo Usuario</h2>
-                </div>
-                <div class="contenedor_formulario_cuerpo">
-                    <form action="#" method="post">
-                        <div class="contenedor_formulario_inputs">
-                            <label for="correo">
-                                <span class="input_titulo">
-                                    Correo
-                                </span>
-                            </label>
-                            <div class="contenedor_input_contenido">
-                                <input type="text" class="input_contenido" id="correo" placeholder="Correo">
-                            </div>
-                        </div>
-                        <div class="contenedor_formulario_inputs">
-                            <label for="nombre">
-                                <span class="input_titulo">
-                                    Nombre
-                                </span>
-                            </label>
-                            <div class="contenedor_input_contenido">
-                                <input type="password" class="input_contenido" id="nombre" placeholder="Nombre">
-                            </div>
-                        </div>
-                        <div class="contenedor_formulario_inputs">
-                            <label for="telefono">
-                                <span class="input_titulo">
-                                    Teléfono
-                                </span>
-                            </label>
-                            <div class="contenedor_input_contenido">
-                                <input type="tel" class="input_contenido" id="telefono" placeholder="Teléfono">
-                            </div>
-                        </div>
-                        <div class="contenedor_formulario_inputs">
-                            <label for="rol">
-                                <span class="input_titulo">
-                                    Rol
-                                </span>
-                            </label>
-                            <div class="contenedor_input_contenido">
-                                <select name="" id="rol" class="input_contenido" placeholder="Rol">
-                                    <option value="Monitorista">Monitorista</option>
-                                    <option value="Chofer">Chofer</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="contenedor_formulario_inputs">
-                            <div class="contenedor_boton_login">
-                                <button type="submit" class="boton_login">Registrarse</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+  <body>
+    <section class="contenedor_principal">
+      <div class="contenedor_formulario">
+        <div class="contenedor_formulario_titulo">
+          <h2 class="formulario_titulo">Nuevo Usuario</h2>
+        </div>
+        <div class="contenedor_formulario_cuerpo">
+          <form action="#" method="post">
+            <div class="contenedor_formulario_inputs">
+              <label for="correo">
+                <span class="input_titulo"> Correo </span>
+              </label>
+              <div class="contenedor_input_contenido">
+                <input
+                  type="text"
+                  class="input_contenido"
+                  id="correo"
+                  placeholder="Correo"
+                />
+              </div>
             </div>
+            <div class="contenedor_formulario_inputs">
+              <label for="nombre">
+                <span class="input_titulo"> Nombre </span>
+              </label>
+              <div class="contenedor_input_contenido">
+                <input
+                  type="password"
+                  class="input_contenido"
+                  id="nombre"
+                  placeholder="Nombre"
+                />
+              </div>
+            </div>
+            <div class="contenedor_formulario_inputs">
+              <label for="telefono">
+                <span class="input_titulo"> Teléfono </span>
+              </label>
+              <div class="contenedor_input_contenido">
+                <input
+                  type="tel"
+                  class="input_contenido"
+                  id="telefono"
+                  placeholder="Teléfono"
+                />
+              </div>
+            </div>
+            <div class="contenedor_formulario_inputs">
+              <label for="rol">
+                <span class="input_titulo"> Rol </span>
+              </label>
+              <div class="contenedor_input_contenido">
+                <select
+                  name=""
+                  id="rol"
+                  class="input_contenido"
+                  placeholder="Rol"
+                  style="width: 100%"
+                >
+                  <option value="Monitorista">Monitorista</option>
+                  <option value="Chofer">Chofer</option>
+                </select>
+              </div>
+            </div>
+            <div class="contenedor_formulario_inputs">
+              <div class="contenedor_boton_login">
+                <button type="submit" class="boton_login">Registrarse</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
 
-            <div class="contenedor_logo">
-                <img src="{% static 'TransporteApp/logo.png' %}" class="logo" alt="Logo de la empresa">
-            </div>
-        </section>
-    </body>
+      <div class="contenedor_logo">
+        <img
+          src="{% static 'TransporteApp/logo.png' %}"
+          class="logo"
+          alt="Logo de la empresa"
+        />
+      </div>
+    </section>
+  </body>
 </html>
-
