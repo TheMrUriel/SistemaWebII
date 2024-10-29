@@ -13,6 +13,7 @@ body {
 ------------------------------------------------------------------------------------- */
 .logo {
   filter: drop-shadow(-2px 2px 15px rgba(255, 255, 255, 0.5));
+  width: 100%;
 }
 
 .formulario_titulo {
@@ -63,7 +64,7 @@ body {
   border: none;
   border-radius: 15px;
   font-weight: 700;
-  padding: 15px 21vh;
+  padding: 13px 23vh;
 }
 
 .contenedor_boton_signup {
@@ -89,50 +90,105 @@ body {
   justify-content: space-evenly;
 }
 
+/* Ajuste base para dispositivos móviles */
+@media (max-width: 768px) {
+  .contenedor_principal {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .contenedor_logo {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .contenedor_formulario {
+    width: 100%;
+  }
+
+  .input_contenido,
+  .boton_login,
+  .boton_signup {
+    width: 96%;
+  }
+
+  .contenedor_formulario_titulo,
+  .contenedor_boton_signup,
+  .contenedor_boton_login {
+    text-align: center;
+  }
+
+  .boton_signup {
+    padding: 15px 38%;
+  }
+}
+
+/* Ajuste adicional para pantallas muy pequeñas */
+@media (max-width: 480px) {
+  .input_contenido {
+    padding: 10px;
+  }
+
+  .boton_login,
+  .boton_signup {
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  .boton_signup {
+    padding: 12px 33%;
+  }
+}
+
 /* ----------------------------------------------------------------------------------
                                     
                             CHOFER - CREAR REPORTE
 
 ------------------------------------------------------------------------------------- */
-.reportes_formulario_titulo {
-  color: #fafafa;
-}
-
+/* Estilos generales */
+.reportes_formulario_titulo,
 .reportes_input_titulo {
   color: #fafafa;
 }
 
 .reportes_contenedor_formulario_titulo {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.reportes_input_contenido {
-  color: #d6d6de;
-  background-color: #212429;
-  border: 2px solid #4f5461;
-  border-radius: 15px;
-  padding: 15px;
-  width: 145vh;
+/* Contenedor del formulario principal */
+.reportes_contenedor_principal {
+  height: 75vh;
+  align-items: center;
+  justify-content: center;
 }
 
-.reportes_input_contenido::placeholder {
-  color: #d6d6de;
-  opacity: 0.5;
+/* Contenedor del formulario */
+.reportes_contenedor_formulario_inputs {
+  margin-bottom: 15px;
+  padding: 10px 10vh;
 }
 
-.reportes_textarea::placeholder {
-  color: #d6d6de;
-  opacity: 0.5;
-}
-
+/* Estilos de los inputs y textarea */
+.reportes_input_contenido,
 .reportes_textarea {
   color: #d6d6de;
   background-color: #212429;
   border: 2px solid #4f5461;
   border-radius: 15px;
-  width: 150vh;
+  padding: 15px;
+  width: 100%; /* Ajuste a todo el ancho disponible */
+  box-sizing: border-box; /* Incluye padding y border en el ancho total */
 }
 
+.reportes_input_contenido::placeholder,
+.reportes_textarea::placeholder {
+  color: #d6d6de;
+  opacity: 0.5;
+}
+
+/* Ajustes para el botón de envío */
 .reportes_boton_submit {
   text-decoration: none;
   color: #fafafa;
@@ -140,29 +196,42 @@ body {
   border: none;
   border-radius: 15px;
   font-weight: 700;
-  padding: 15px 72vh;
+  padding: 15px;
+  width: 100%;
   margin-top: 10px;
 }
 
-.reportes_contenedor_formulario_inputs {
-  margin-bottom: 10px;
-}
-
-.reportes_contenedor_input_contenido {
-  margin-top: 10px;
-}
-
-.reportes_contenedor_formulario_titulo {
+/* Contenedor para el botón de envío */
+.reportes_contenedor_boton_submit {
   text-align: center;
 }
 
-.reportes_contenedor_principal {
-  height: 75vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .reportes_input_contenido,
+  .reportes_textarea {
+    padding: 12px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .reportes_boton_submit {
+    padding: 12px;
+    font-size: 1rem;
+  }
 }
 
+@media (max-width: 480px) {
+  .reportes_input_contenido,
+  .reportes_textarea {
+    padding: 10px;
+  }
+
+  .reportes_boton_submit {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
 
 /* ----------------------------------------------------------------------------------
                                     
@@ -191,7 +260,7 @@ body {
 
 .disponible_boton_cancelado {
   color: #fafafa;
-  background-color: #FA6161;
+  background-color: #fa6161;
   padding: 15px;
   border: none;
   border-radius: 15px;
@@ -201,7 +270,7 @@ body {
 
 .disponible_boton_aceptar {
   color: #fafafa;
-  background-color: #FAD34A;
+  background-color: #fad34a;
   padding: 15px;
   border: none;
   border-radius: 15px;
@@ -211,7 +280,7 @@ body {
 
 .disponible_boton_aceptado {
   color: #fafafa;
-  background-color: #4DFA4A;
+  background-color: #4dfa4a;
   padding: 15px;
   border: none;
   border-radius: 15px;
@@ -233,7 +302,6 @@ body {
 .disponible_contenedor_titulo {
   margin-bottom: 30px;
 }
-
 
 /* ----------------------------------------------------------------------------------
                                     
@@ -287,31 +355,41 @@ body {
   margin-bottom: 2%;
 }
 
-
 /* ----------------------------------------------------------------------------------
                                     
                         MONITARISTA - ASIGNAR VIAJE
 
 ------------------------------------------------------------------------------------- */
-.asignar_titulo {
-  color: #fafafa;
-}
-
+/* Estilos generales */
+.asignar_titulo,
 .asignar_titulo_input {
   color: #fafafa;
 }
 
 .asignar_contenedor_titulo {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
+.asignar_contenedor_contenido {
+  justify-content: center;
+  padding: 10px 10vh;
+}
+
+/* Contenedor del formulario */
+.asignar_contenedor_formulario_inputs {
+  margin-bottom: 15px;
+}
+
+/* Estilos de los inputs y select */
 .asignar_input {
   color: #d6d6de;
   background-color: #212429;
   border: 2px solid #4f5461;
   border-radius: 15px;
   padding: 15px;
-  width: 145vh;
+  width: 100%; /* Ajuste a todo el ancho disponible */
+  box-sizing: border-box;
 }
 
 .asignar_input::placeholder {
@@ -319,6 +397,11 @@ body {
   opacity: 0.5;
 }
 
+.asignar_contenedor_input {
+  margin-top: 10px;
+}
+
+/* Botón de asignación */
 .boton_asignacion {
   color: #fafafa;
   background-color: #586088;
@@ -326,30 +409,41 @@ body {
   border: none;
   border-radius: 15px;
   font-weight: 700;
-  width: 55vh;
-}
-
-.asignar_contenedor_formulario_inputs {
-  margin-bottom: 10px;
-}
-
-.asignar_contenedor_input {
-  margin-top: 10px;
-}
-
-.asignar_contenedor_titulo {
-  text-align: center;
-}
-
-.asignar_contenedor_contenido {
-  display: flex;
-  justify-content: center;
+  width: 100%;
 }
 
 .contenedor_boton_asignacion {
   text-align: center;
 }
 
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .asignar_contenedor_titulo {
+    margin-bottom: 15px;
+  }
+
+  .asignar_input {
+    padding: 12px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .boton_asignacion {
+    padding: 12px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .asignar_input {
+    padding: 10px;
+  }
+
+  .boton_asignacion {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
 
 /* ----------------------------------------------------------------------------------
                                     
@@ -378,7 +472,7 @@ body {
 
 .viajes_boton_noiniciado {
   color: #fafafa;
-  background-color: #FA6161;
+  background-color: #fa6161;
   padding: 15px;
   border: none;
   border-radius: 15px;
@@ -388,7 +482,7 @@ body {
 
 .viajes_boton_encurso {
   color: #fafafa;
-  background-color: #FAD34A;
+  background-color: #fad34a;
   padding: 15px;
   border: none;
   border-radius: 15px;
@@ -398,7 +492,7 @@ body {
 
 .viajes_boton_completado {
   color: #fafafa;
-  background-color: #4DFA4A;
+  background-color: #4dfa4a;
   padding: 15px;
   border: none;
   border-radius: 15px;
@@ -420,7 +514,6 @@ body {
 .viajes_contenedor_titulo {
   margin-bottom: 30px;
 }
-
 
 /* ----------------------------------------------------------------------------------
                                     
@@ -475,5 +568,3 @@ p {
   justify-content: space-evenly;
   margin-top: 1%;
 }
-
-
