@@ -252,7 +252,7 @@ body {
   border: 2px solid #4f5461;
   border-radius: 15px;
   padding: 15px;
-  width: 145vh;
+  width: 95%;
 
   display: flex;
   justify-content: space-around;
@@ -327,6 +327,7 @@ body {
   display: flex;
   justify-content: center;
   margin: auto;
+  margin-bottom: 1%;
 }
 
 .boton_enviar {
@@ -337,6 +338,7 @@ body {
   border-radius: 15px;
   font-weight: 700;
   width: 55vh;
+  margin-right: 10%;
 }
 
 .boton_regresar {
@@ -346,13 +348,18 @@ body {
   border: none;
   border-radius: 15px;
   font-weight: 700;
-  padding: 15px 21vh;
+  padding: 15px 10%;
 }
 
 .evidencia_contenedor_formulario {
   display: flex;
   align-items: end;
   margin-bottom: 2%;
+}
+
+.evidencia_contenedor_boton_enviar {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 /* ----------------------------------------------------------------------------------
@@ -464,7 +471,7 @@ body {
   border: 2px solid #4f5461;
   border-radius: 15px;
   padding: 15px;
-  width: 145vh;
+  width: 95%;
 
   display: flex;
   justify-content: space-around;
@@ -543,6 +550,7 @@ p {
   display: flex;
   flex-direction: column;
   margin: auto;
+  margin-bottom: 1%;
 }
 
 .boton_tiempo {
@@ -552,7 +560,7 @@ p {
   border: none;
   border-radius: 15px;
   font-weight: 700;
-  padding: 15px 21vh;
+  padding: 15px 10%;
 }
 
 .monitoreo_contenedor_informacion {
