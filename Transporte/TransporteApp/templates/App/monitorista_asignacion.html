@@ -17,13 +17,14 @@
                 </div>
             </div>
             <div class="asignar_contenedor_contenido">
-                <form action="" method="post">
+                <form id="formulario-viaje">
+                    {% csrf_token %} 
                     <div class="asignar_contenedor_formulario_inputs">
-                        <label for="caja">
-                            <span class="asignar_titulo_input">Caja</span>
+                        <label for="cporte">
+                            <span class="asignar_titulo_input"># Carta porte</span>
                         </label>
                         <div class="asignar_contenedor_input">
-                            <input type="text" class="asignar_input" name="" id="caja" placeholder="Caja">
+                            <input type="text" class="asignar_input" name="cporte" id="cporte" placeholder="# Carta porte">
                         </div>
                     </div>
                     <div class="asignar_contenedor_formulario_inputs">
@@ -31,10 +32,19 @@
                             <span class="asignar_titulo_input">Camion</span>
                         </label>
                         <div class="asignar_contenedor_input">
-                            <select name="" id="camion" class="asignar_input" placeholder="Camion">
-                                <option value="7843">7843</option>
-                                <option value="2256">2256</option>
+                            <select name="camion" id="camion" class="asignar_input" placeholder="Camion">
+                                {% for camion in vehiculos %}
+                                  <option value="{{ camion.vehiculo }}">{{ camion.vehiculo }}</option>
+                                {% endfor %}
                             </select>
+                        </div>
+                    </div>
+                    <div class="asignar_contenedor_formulario_inputs">
+                        <label for="caja">
+                            <span class="asignar_titulo_input">Caja</span>
+                        </label>
+                        <div class="asignar_contenedor_input">
+                            <input type="text" class="asignar_input" name="caja" id="caja" placeholder="Caja">
                         </div>
                     </div>
                     <div class="asignar_contenedor_formulario_inputs">
@@ -42,7 +52,11 @@
                             <span class="asignar_titulo_input">Chofer</span>
                         </label>
                         <div class="asignar_contenedor_input">
-                            <input type="text" class="asignar_input" name="" id="chofer" placeholder="Chofer">
+                            <select name="chofer" id="chofer" class="asignar_input" placeholder="Chofer">
+                                {% for chofer in choferes %}
+                                  <option value="{{ chofer.nombre }}">{{ chofer.nombre }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                     </div>
                     <div class="asignar_contenedor_formulario_inputs">
@@ -50,7 +64,7 @@
                             <span class="asignar_titulo_input">Origen</span>
                         </label>
                         <div class="asignar_contenedor_input">
-                            <input type="text" class="asignar_input" name="" id="origen" placeholder="Origen">
+                            <input type="text" class="asignar_input" name="origen" id="origen" placeholder="Origen">
                         </div>
                     </div>
                     <div class="asignar_contenedor_formulario_inputs">
@@ -58,7 +72,7 @@
                             <span class="asignar_titulo_input">Destino</span>
                         </label>
                         <div class="asignar_contenedor_input">
-                            <input type="text" class="asignar_input" name="" id="destino" placeholder="Destino">
+                            <input type="text" class="asignar_input" name="destino" id="destino" placeholder="Destino">
                         </div>
                     </div>
                     <div class="asignar_contenedor_formulario_inputs">
@@ -66,7 +80,7 @@
                             <span class="asignar_titulo_input">No. de Sello</span>
                         </label>
                         <div class="asignar_contenedor_input">
-                            <input type="text" class="asignar_input" name="" id="sello" placeholder="No. de Sello">
+                            <input type="text" class="asignar_input" name="sello" id="sello" placeholder="No. de Sello">
                         </div>
                     </div>
                     <div class="asignar_contenedor_formulario_inputs">
@@ -74,15 +88,44 @@
                             <span class="asignar_titulo_input">Cliente</span>
                         </label>
                         <div class="asignar_contenedor_input">
-                            <input type="text" class="asignar_input" name="" id="cliente" placeholder="Cliente">
+                            <select name="cliente" id="cliente" class="asignar_input" placeholder="Cliente">
+                                {% for cliente in clientes %}
+                                  <option value="{{ cliente.nombre }}">{{ cliente.nombre }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                     </div>
                     <div class="asignar_contenedor_formulario_inputs">
                         <div class="contenedor_boton_asignacion">
-                            <button type="submit" class="boton_asignacion">Asignar Viaje</button>
+                            <button type="button" onclick="crearViaje()" class="boton_asignacion">Asignar Viaje</button>
                         </div>
                     </div>
                 </form>
+                <script>
+                    function crearViaje() {
+                      // Obtener los datos del formulario
+                      var formData = new FormData(document.getElementById('formulario-viaje'));
+                    
+                      // Enviar la petición AJAX
+                      fetch('/crear_viaje/', {
+                        method: 'POST',
+                        body: formData
+                      })
+                      .then(response => response.json())
+                      .then(data => {
+                        if (data.mensaje) {
+                            window.location.href = '/viajes/';  
+                          // Puedes redirigir a otra página o actualizar la vista
+                        } else if (data.error) {
+                          alert('Error: ' + data.error);  // Mostrar mensaje de error
+                        }
+                      })
+                      .catch(error => {
+                        console.error('Error:', error);
+                        alert('Ocurrió un error al crear el viaje.');
+                      });
+                    }
+                    </script>
             </div>
         </section>
     </body>

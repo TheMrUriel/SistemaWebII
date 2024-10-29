@@ -15,5 +15,8 @@ urlpatterns = [
     # - Monitorista
     path('viajes/', views.viajes, name = 'viajes'),
     path('informacion/', views.viaje_info, name = 'informacion'),
-    path('asignacion/', views.asignar_viaje, name = 'asignacion')
+    path('asignacion/', views.asignar_viaje, name = 'asignacion'),
+
+    # - Funciones firestore
+    path('crear_viaje/', views.crear_viaje, name='crear_viaje')
 ]

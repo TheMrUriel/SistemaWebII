@@ -27,5 +27,46 @@
     <p>No hay viajes registrados.</p>
     {% endif %}
   </div>
+
+  <h2>Asignar Viaje</h2>
+
+<form id="formulario-viaje">
+  {% csrf_token %}  
+  <div>
+    <label for="chofer">Chofer:</label>
+    <input type="text" id="chofer" name="chofer" required>
+  </div>
+  <div>
+    <label for="destino">Destino:</label>
+    <input type="text" id="destino" name="destino" required>
+  </div>
+  <button type="button" onclick="crearViaje()">Crear Viaje</button>
+</form>
+
+<script>
+function crearViaje() {
+  // Obtener los datos del formulario
+  var formData = new FormData(document.getElementById('formulario-viaje'));
+
+  // Enviar la petición AJAX
+  fetch('/crear_viaje/', {
+    method: 'POST',
+    body: formData
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.mensaje) {
+      alert(data.mensaje);  // Mostrar mensaje de éxito
+      // Puedes redirigir a otra página o actualizar la vista
+    } else if (data.error) {
+      alert('Error: ' + data.error);  // Mostrar mensaje de error
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Ocurrió un error al crear el viaje.');
+  });
+}
+</script>
 </body>
 {% endblock %}
