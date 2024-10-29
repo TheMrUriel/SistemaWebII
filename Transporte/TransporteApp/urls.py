@@ -10,8 +10,10 @@ urlpatterns = [
     # - Chofer
     path('reportes/', views.reportes, name = 'reportes'),
     path('evidencia/', views.evidencia, name = 'evidencia'),
+    path('viajesDisponibles/', views.chofer_viajes, name = 'viajesDisponibles'),
 
     # - Monitorista
+    path('viajes/', views.viajes, name = 'viajes'),
     path('informacion/', views.viaje_info, name = 'informacion'),
     path('asignacion/', views.asignar_viaje, name = 'asignacion')
 ]

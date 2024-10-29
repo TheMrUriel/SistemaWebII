@@ -11,21 +11,30 @@ def log_in(request):
 def sign_up(request):
     return render(request, 'App/signup.html')
 
-# - Chofer
+
+# --------------------------------------------------------- Chofer
 def reportes(request):
     return render(request, 'App/chofer_reporte.html')
 
 def evidencia(request):
     return render(request, 'App/chofer_evidencia.html')
 
-# - Monitorista
+def chofer_viajes(request):
+    return render(request, 'App/chofer_viajes.html')
+
+
+# ------------------------------------------------------------------ Monitorista
 def viaje_info(request):
     return render(request, 'App/monitorista_info_viaje.html')
 
 def asignar_viaje(request):
     return render(request, 'App/monitorista_asignacion.html')
 
-# - Base de datos
+def viajes(request):
+    return render(request, 'App/monitorista_viajes.html')
+
+
+# ------------------------------------------------------------------- Base de datos
 def bd(request):
     db = firestore.client()
     viajes_ref = db.collection('viajes')  # Referencia a la colección "viajes"

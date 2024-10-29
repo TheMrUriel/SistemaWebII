@@ -1,0 +1,54 @@
+{% extends 'conex/Encabezado_chofer.html' %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'TransporteApp/style.css' %}" />
+    <title>Viajes</title>
+  </head>
+  <body>
+    <section class="disponible_contenedor_principal">
+        <div class="disponible_contenedor_titulo">
+            <h2 class="disponible_titulo">Viajes</h2>
+        </div>
+        <div class="disponible_contenedor_contenido">
+            <div class="disponible_contenedor_viaje">
+                <div class="disponible_contenedor_imagen">
+                    <p>Aquí va una imagen</p>
+                </div>
+                <div class="disponible_contenedor_informacion">
+                    <p class="disponible_informacion"><strong>Titulo: </strong>Información</p>
+                </div>
+                <div class="disponible_contenedor_boton">
+                    <a href="#" class="disponible_boton_cancelado">Cancelado</a>
+                </div>
+            </div>
+            <div class="disponible_contenedor_viaje">
+                <div class="disponible_contenedor_imagen">
+                    <p>Aquí va una imagen</p>
+                </div>
+                <div class="disponible_contenedor_informacion">
+                    <p class="disponible_informacion"><strong>Titulo: </strong>Información</p>
+                </div>
+                <div class="disponible_contenedor_boton">
+                    <a href="/evidencia/" class="disponible_boton_aceptar">Aceptar</a>
+                </div>
+            </div>
+            <div class="disponible_contenedor_viaje">
+                <div class="disponible_contenedor_imagen">
+                    <p>Aquí va una imagen</p>
+                </div>
+                <div class="disponible_contenedor_informacion">
+                    <p class="disponible_informacion"><strong>Titulo: </strong>Información</p>
+                </div>
+                <div class="disponible_contenedor_boton">
+                    <a href="#" class="disponible_boton_aceptado">Aceptado</a>
+                </div>
+            </div>
+        </div>
+    </section>
+  </body>
+</html>
+{% endblock %}

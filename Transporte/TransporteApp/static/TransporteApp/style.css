@@ -163,6 +163,78 @@ body {
   justify-content: center;
 }
 
+
+/* ----------------------------------------------------------------------------------
+                                    
+                          CHOFER - VIAJES DISPONIBLES
+
+------------------------------------------------------------------------------------- */
+.disponible_titulo {
+  color: #fafafa;
+}
+
+.disponible_titulo {
+  color: #fafafa;
+}
+
+.disponible_contenedor_viaje {
+  color: #d6d6de;
+  background-color: #212429;
+  border: 2px solid #4f5461;
+  border-radius: 15px;
+  padding: 15px;
+  width: 145vh;
+
+  display: flex;
+  justify-content: space-around;
+}
+
+.disponible_boton_cancelado {
+  color: #fafafa;
+  background-color: #FA6161;
+  padding: 15px;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  width: 55vh;
+}
+
+.disponible_boton_aceptar {
+  color: #fafafa;
+  background-color: #FAD34A;
+  padding: 15px;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  width: 200px;
+}
+
+.disponible_boton_aceptado {
+  color: #fafafa;
+  background-color: #4DFA4A;
+  padding: 15px;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  width: 200px;
+}
+
+.disponible_contenedor_titulo {
+  text-align: center;
+}
+
+.disponible_contenedor_viaje {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.disponible_contenedor_titulo {
+  margin-bottom: 30px;
+}
+
+
 /* ----------------------------------------------------------------------------------
                                     
                             CHOFER - SUBIR EVIDENCIA
@@ -175,6 +247,7 @@ body {
 .evidencia_contenedor_titulo {
   display: flex;
   justify-content: center;
+  margin-bottom: 30px;
 }
 
 .evidencia_contenedor_contenido {
@@ -280,7 +353,78 @@ body {
 
 /* ----------------------------------------------------------------------------------
                                     
-                        MONITARISTA - MONITOREO DE VIAJE
+                      MONITARISTA - MONITOREO DE VIAJE (TODOS)
+
+------------------------------------------------------------------------------------- */
+.viajes_titulo {
+  color: #fafafa;
+}
+
+.viajes_titulo {
+  color: #fafafa;
+}
+
+.viajes_contenedor_viaje {
+  color: #d6d6de;
+  background-color: #212429;
+  border: 2px solid #4f5461;
+  border-radius: 15px;
+  padding: 15px;
+  width: 145vh;
+
+  display: flex;
+  justify-content: space-around;
+}
+
+.viajes_boton_noiniciado {
+  color: #fafafa;
+  background-color: #FA6161;
+  padding: 15px;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  width: 55vh;
+}
+
+.viajes_boton_encurso {
+  color: #fafafa;
+  background-color: #FAD34A;
+  padding: 15px;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  width: 200px;
+}
+
+.viajes_boton_completado {
+  color: #fafafa;
+  background-color: #4DFA4A;
+  padding: 15px;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  width: 200px;
+}
+
+.viajes_contenedor_titulo {
+  text-align: center;
+}
+
+.viajes_contenedor_viaje {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.viajes_contenedor_titulo {
+  margin-bottom: 30px;
+}
+
+
+/* ----------------------------------------------------------------------------------
+                                    
+                      MONITARISTA - MONITOREO DE VIAJE (SOLO)
 
 ------------------------------------------------------------------------------------- */
 .monitoreo_titulo {
