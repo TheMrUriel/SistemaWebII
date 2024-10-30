@@ -18,5 +18,6 @@ urlpatterns = [
     path('asignacion/', views.asignar_viaje, name = 'asignacion'),
 
     # - Funciones firestore
-    path('crear_viaje/', views.crear_viaje, name='crear_viaje')
+    path('crear_viaje/', views.crear_viaje, name='crear_viaje'),
+    path('login/', views.log_in, name='login')
 ]

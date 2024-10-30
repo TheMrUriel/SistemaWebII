@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from django.http import JsonResponse  # Importar JsonResponse
-from django.http import HttpResponse
-from firebase_admin import firestore
+from django.http import JsonResponse, HttpResponse
+from firebase_admin import firestore, auth  # Importar auth para autenticación con Firebase Admin
 
-db = firestore.client()  # Inicializar la conexión a Firestore
+# Inicializar Firestore
+db = firestore.client()
 
 # ------------------------ Funciones para Firestore --------------------------- #
 def crear_documento(coleccion, datos):
@@ -22,20 +22,8 @@ def obtener_documento(coleccion, id_documento):
 def obtener_documentos(coleccion, orden=None, limite=None, filtros=None):
     """
     Obtiene documentos de la colección, con opciones de ordenamiento, límite y filtros.
-
-    Args:
-      coleccion: Nombre de la colección en Firestore.
-      orden: Campo por el que ordenar los documentos (opcional).
-      limite: Número máximo de documentos a obtener (opcional).
-      filtros: Lista de tuplas con filtros (opcional). 
-              Cada tupla debe tener la forma (campo, operador, valor), 
-              donde operador puede ser '==', '>', '<', '>=', '<='.
-
-    Returns:
-      Una lista de diccionarios, donde cada diccionario representa un documento.
     """
     docs_ref = db.collection(coleccion)
-
     if orden:
         docs_ref = docs_ref.order_by(orden)
     if limite:
@@ -43,17 +31,7 @@ def obtener_documentos(coleccion, orden=None, limite=None, filtros=None):
     if filtros:
         for filtro in filtros:
             campo, operador, valor = filtro
-            if operador == '==':
-                docs_ref = docs_ref.where(campo, '==', valor)
-            elif operador == '>':
-                docs_ref = docs_ref.where(campo, '>', valor)
-            elif operador == '<':
-                docs_ref = docs_ref.where(campo, '<', valor)
-            elif operador == '>=':
-                docs_ref = docs_ref.where(campo, '>=', valor)
-            elif operador == '<=':
-                docs_ref = docs_ref.where(campo, '<=', valor)
-
+            docs_ref = docs_ref.where(campo, operador, valor)
     docs = docs_ref.stream()
     return [doc.to_dict() for doc in docs]
 
@@ -66,6 +44,7 @@ def borrar_documento(coleccion, id_documento):
     """Borra un documento de la colección."""
     db.collection(coleccion).document(id_documento).delete()
 
+# ----------------------------------- Vistas ----------------------------------#
 
 def crear_viaje(request):
     if request.method == 'POST':
@@ -79,7 +58,6 @@ def crear_viaje(request):
             sello = request.POST.get('sello')
             cliente = request.POST.get('cliente')
             cporte = request.POST.get('cporte')
-            # ... otros datos del viaje
 
             # Crear un diccionario con los datos del viaje
             datos_viaje = {
@@ -103,20 +81,36 @@ def crear_viaje(request):
             # Devolver una respuesta de error
             return JsonResponse({'error': str(e)}, status=500)
 
-    # Si no es una petición POST, puedes renderizar una plantilla o devolver un error
     return JsonResponse({'error': 'Método no permitido'}, status=405)
 
-# ----------------------------------- Vistas ----------------------------------#
-
 def home(request):
-    return render(request, 'App/Inicio.html')
+    return render(request, 'App/monitorista_viajes.html')
 
 def log_in(request):
+    if request.method == 'POST':
+        try:
+            email = request.POST.get('username')
+            password = request.POST.get('password')
+
+            # Autenticar usuario con Firebase Admin
+            user = auth.get_user_by_email(email)
+            # Firebase Admin no permite autenticación directa con contraseña.
+            # Necesitarías implementar autenticación personalizada.
+
+            # Esto es solo para verificar si el usuario existe y obtener su UID
+            request.session['user_id'] = user.uid
+
+            # Redirige al usuario a la página principal
+            return redirect('home')
+
+        except auth.AuthError as e:
+            error_message = f"Error de autenticación: {e}"
+            return render(request, 'App/login.html', {'error': error_message})
+
     return render(request, 'App/login.html')
 
 def sign_up(request):
     return render(request, 'App/signup.html')
-
 
 # --------------------------------------------------------- Chofer
 def reportes(request):
@@ -127,7 +121,6 @@ def evidencia(request):
 
 def chofer_viajes(request):
     return render(request, 'App/chofer_viajes.html')
-
 
 # ------------------------------------------------------------------ Monitorista
 def viaje_info(request):
@@ -143,13 +136,11 @@ def asignar_viaje(request):
 def viajes(request):
     return render(request, 'App/monitorista_viajes.html')
 
-
 # ------------------------------------------------------------------- Archivo de prueba de Base de datos
 def bd(request):
-    db = firestore.client()
     viajes_ref = db.collection('viajes')  # Referencia a la colección "viajes"
 
-    # Obtener el último documento de "viajes" ordenado por fecha (o el campo que uses)
+    # Obtener el último documento de "viajes" ordenado por fecha
     last_doc = viajes_ref.order_by('fecha', direction=firestore.Query.DESCENDING).limit(1).get()
 
     if last_doc:
