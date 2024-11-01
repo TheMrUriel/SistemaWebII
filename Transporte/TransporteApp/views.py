@@ -87,29 +87,39 @@ def home(request):
     return render(request, 'App/monitorista_viajes.html')
 
 def log_in(request):
-    if request.method == 'POST':
-        try:
-            email = request.POST.get('username')
-            password = request.POST.get('password')
-
-            # Autenticar usuario con Firebase Admin
-            user = auth.get_user_by_email(email)
-            # Firebase Admin no permite autenticación directa con contraseña.
-            # Necesitarías implementar autenticación personalizada.
-
-            # Esto es solo para verificar si el usuario existe y obtener su UID
-            request.session['user_id'] = user.uid
-
-            # Redirige al usuario a la página principal
-            return redirect('home')
-
-        except auth.AuthError as e:
-            error_message = f"Error de autenticación: {e}"
-            return render(request, 'App/login.html', {'error': error_message})
-
     return render(request, 'App/login.html')
 
 def sign_up(request):
+    if request.method == 'POST':
+        try:
+            email = request.POST.get('email')
+            password = request.POST.get('password')
+            nombre = request.POST.get('nombre')
+            telefono = request.POST.get('telefono')
+            rol = int(request.POST.get('rol'))  # Convertir rol a entero
+
+            # Crear usuario en Firebase Authentication
+            user = auth.create_user(
+                email=email,
+                password=password  # Usar la contraseña hasheada
+            )
+
+            # Crear documento en Firestore
+            datos_usuario = {
+                'email': email,
+                'tipo': rol, 
+                'telefono': telefono,
+                'nombre': nombre,
+                'uid': user.uid  # Incluir el UID del usuario de Firebase
+            }
+            crear_documento('usuarios', datos_usuario)
+
+            return JsonResponse({'success': True})
+
+        except Exception as e:  # Capturar cualquier excepción
+            error_message = f"Error al crear el usuario: {e}"
+            return JsonResponse({'success': False, 'error': error_message})
+
     return render(request, 'App/signup.html')
 
 # --------------------------------------------------------- Chofer

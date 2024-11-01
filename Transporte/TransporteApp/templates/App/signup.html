@@ -15,7 +15,22 @@
           <h2 class="formulario_titulo">Nuevo Usuario</h2>
         </div>
         <div class="contenedor_formulario_cuerpo">
-          <form action="#" method="post">
+          <form method="post" action="#" name="signup-form" id="signup-form"> 
+            {% csrf_token %}
+            <div class="contenedor_formulario_inputs">
+              <label for="nombre">
+                <span class="input_titulo"> Nombre </span>
+              </label>
+              <div class="contenedor_input_contenido">
+                <input
+                  type="text"
+                  class="input_contenido"
+                  id="nombre"
+                  placeholder="Nombre"
+                  name="nombre"
+                />
+              </div>
+            </div>
             <div class="contenedor_formulario_inputs">
               <label for="correo">
                 <span class="input_titulo"> Correo </span>
@@ -26,19 +41,21 @@
                   class="input_contenido"
                   id="correo"
                   placeholder="Correo"
+                  name="email"
                 />
               </div>
             </div>
             <div class="contenedor_formulario_inputs">
-              <label for="nombre">
-                <span class="input_titulo"> Nombre </span>
+              <label for="password">
+                <span class="input_titulo"> Contraseña  </span>
               </label>
               <div class="contenedor_input_contenido">
                 <input
                   type="password"
                   class="input_contenido"
-                  id="nombre"
-                  placeholder="Nombre"
+                  id="password"
+                  placeholder="Contraseña"
+                  name="password"
                 />
               </div>
             </div>
@@ -52,6 +69,7 @@
                   class="input_contenido"
                   id="telefono"
                   placeholder="Teléfono"
+                  name="telefono"
                 />
               </div>
             </div>
@@ -61,14 +79,14 @@
               </label>
               <div class="contenedor_input_contenido">
                 <select
-                  name=""
+                  name="rol"
                   id="rol"
                   class="input_contenido"
                   placeholder="Rol"
                   style="width: 100%"
                 >
-                  <option value="Monitorista">Monitorista</option>
-                  <option value="Chofer">Chofer</option>
+                  <option value=1>Monitorista</option>
+                  <option value=3>Chofer</option>
                 </select>
               </div>
             </div>
@@ -89,5 +107,32 @@
         />
       </div>
     </section>
+    <script>
+      document.getElementById('signup-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevenir el envío por defecto
+    
+        // Obtener los datos del formulario
+        const formData = new FormData(this);
+    
+        // Realizar la petición AJAX
+        fetch("{% url 'signup' %}", {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            // Redirigir al login
+            window.location.href = "{% url 'login' %}"; 
+          } else {
+            // Mostrar mensaje de error
+            alert(data.error); 
+          }
+        })
+        .catch(error => {
+          console.error('Error en la petición AJAX:', error);
+        });
+      });
+    </script>
   </body>
 </html>
