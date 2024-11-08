@@ -69,7 +69,7 @@
       <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
           <h4 style="color: #ffffff">
-            <a href="/viajesDisponibles/">Transportes Vargas</a>
+            <a href="/menuChofer/">Transportes Vargas</a>
           </h4>
           <button
             class="navbar-toggler"
@@ -85,12 +85,17 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item ms-3">
+                <a class="nav-link" href="/menuChofer/"
+                  >Inicio</a
+                >
+              </li>
+              <li class="nav-item ms-3">
                 <a class="nav-link" href="/viajesDisponibles/"
                   >Viajes Disponibles</a
                 >
               </li>
               <li class="nav-item ms-3">
-                <a class="nav-link" href="/reportes/">Reportar Viajes</a>
+                <a class="nav-link" href="/reportes/">Reportar Problema</a>
               </li>
             </ul>
             <button class="btn btn-login ms-3"  id="sign-out-btn">Log Out</button>
@@ -129,7 +134,7 @@
               const tipoUsuario = doc.data().tipo;
               if (tipoUsuario !== 3) { 
                 // Redirigir si el tipo de usuario no es 1
-                window.location.href = "/home"; 
+                window.location.href = "/menuMonitorista"; 
               }
             } else {
               alert("El usuario no existe");

@@ -8,6 +8,45 @@ body {
 
 /* ----------------------------------------------------------------------------------
                                     
+                                      MENÚS
+
+------------------------------------------------------------------------------------- */
+.menu_chofer_viajesDisponibles {
+  filter: drop-shadow(-2px 2px 15px rgba(255, 255, 255, 0.5));
+  width: 10%;
+}
+
+.menu_titulo {
+  color: #fafafa;
+  text-align: center;
+}
+
+.menu_contenedor_titulo {
+  margin-bottom: 30px;
+}
+
+.menu_contenedor_contenido {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+.menu_contenido_enlace {
+  color: #d6d6de;
+  background-color: #212429;
+  border: 2px solid #4f5461;
+  border-radius: 15px;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  width: 40%;
+}
+
+
+
+/* ----------------------------------------------------------------------------------
+                                    
                         INICIAR SESION  /   REGISTRARSE
 
 ------------------------------------------------------------------------------------- */

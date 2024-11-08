@@ -1,0 +1,37 @@
+{% extends 'conex/Encabezado_chofer.html' %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {%load static%}
+        <link rel="stylesheet" href="{% static 'TransporteApp/style.css' %}" />
+        <title>Menú</title>
+    </head>
+    <body>
+        <section class="menu_contenedor_principal">
+            <div class="menu_contenedor_titulo">
+                <h2 class="menu_titulo">Bienvenido "usuario"</h2>
+            </div>
+            <div class="menu_contenedor_contenido">
+                <div class="menu_contenido_enlace">
+                    <div class="menu_contenedor_enlace_imagen">
+                        <img src="{% static 'TransporteApp/chofer_viajes.png' %}" class="menu_chofer_viajesDisponibles" alt="Viajes disponibles del chofer">
+                    </div>
+                    <div class="menu_contenedor_enlace_titulo">
+                        <a href="/viajesDisponibles/"><div>Viajes Disponibles</div></a>
+                    </div>
+                </div>
+                <div class="menu_contenido_enlace">
+                    <div class="menu_contenedor_enlace_imagen">
+                        <img src="{% static 'TransporteApp/chofer_reporte.png' %}" class="menu_chofer_viajesDisponibles" alt="Viajes disponibles del chofer"></a>
+                    </div>
+                    <div class="menu_contenedor_enlace_titulo">
+                        <a href="/reportes/"><div>Reportar Problema</div></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
+{% endblock %}

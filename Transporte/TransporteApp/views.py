@@ -123,6 +123,9 @@ def sign_up(request):
     return render(request, 'App/signup.html')
 
 # --------------------------------------------------------- Chofer
+def menu_chofer(request):
+    return render(request, 'App/chofer_menu.html')
+
 def reportes(request):
     return render(request, 'App/chofer_reporte.html')
 
@@ -133,6 +136,9 @@ def chofer_viajes(request):
     return render(request, 'App/chofer_viajes.html')
 
 # ------------------------------------------------------------------ Monitorista
+def menu_monitorista(request):
+    return render(request, 'App/monitorista_menu.html')
+
 def viaje_info(request):
     return render(request, 'App/monitorista_info_viaje.html')
 

@@ -7,17 +7,22 @@ urlpatterns = [
     path('home/', views.home, name='home'),
     path('bd/', views.bd, name='bd'),
 
-    # - Chofer
+
+    # ----------------------------------------------------------------- Chofer
+    path('menuChofer/', views.menu_chofer, name = 'menuChofer'),
     path('reportes/', views.reportes, name = 'reportes'),
     path('evidencia/', views.evidencia, name = 'evidencia'),
     path('viajesDisponibles/', views.chofer_viajes, name = 'viajesDisponibles'),
 
-    # - Monitorista
+
+    # ----------------------------------------------------------------  Monitorista
+    path('menuMonitorista/', views.menu_monitorista, name = 'menuMonitorista'),
     path('viajes/', views.viajes, name = 'viajes'),
     path('informacion/', views.viaje_info, name = 'informacion'),
     path('asignacion/', views.asignar_viaje, name = 'asignacion'),
 
-    # - Funciones firestore
+
+    # ---------------------------------------------------------------- Funciones firestore
     path('crear_viaje/', views.crear_viaje, name='crear_viaje'),
     path('login/', views.log_in, name='login')
 ]
