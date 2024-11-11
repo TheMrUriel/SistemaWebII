@@ -37,13 +37,19 @@
       }
       .btn-login {
         background-color: #617afa;
-        border-color: #716f6f;
-        color: #ffffff;
+        border-radius: 15px;
+        font-weight: 700;
+        color: #fafafa;
+
+        cursor: pointer;
+        transition: transform 0.2s ease;
       }
       .btn-login:hover {
-        background-color: #38499e;
-        border-color: black;
-        color: #ffffff;
+        background-color: #617afa;
+        color: #fafafa;
+      }
+      .btn-login:active {
+        transform: scale(0.96);
       }
       @media (min-width: 992px) {
         .navbar-nav {
@@ -148,7 +154,7 @@
         }
       });
   
-      // Cerrar sesión
+      // Cerrar sesión 
       const btnSignOut = document.getElementById('sign-out-btn'); 
       btnSignOut.addEventListener('click', () => {
         auth.signOut()

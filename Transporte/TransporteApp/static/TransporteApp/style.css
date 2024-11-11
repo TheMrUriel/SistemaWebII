@@ -13,7 +13,7 @@ body {
 ------------------------------------------------------------------------------------- */
 .menu_chofer_viajesDisponibles {
   filter: drop-shadow(-2px 2px 15px rgba(255, 255, 255, 0.5));
-  width: 10%;
+  width: 150px;
 }
 
 .menu_titulo {
@@ -36,13 +36,44 @@ body {
   background-color: #212429;
   border: 2px solid #4f5461;
   border-radius: 15px;
-  text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
 
   width: 40%;
+  height: 300px;
+
+  display: flex;
+  justify-content: center;
 }
 
+.menu_contenedor_enlace_imagen {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.menu_contenedor_enlace_titulo {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.menu_contenido_enlace_juntos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.enlace_prueba {
+  margin: 0 auto;
+}
+
+.menu_enlace_titulo {
+  font-weight: 700;
+}
 
 
 /* ----------------------------------------------------------------------------------
@@ -94,6 +125,13 @@ body {
   border-radius: 15px;
   font-weight: 700;
   width: 55vh;
+
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.boton_login:active {
+  transform: scale(0.96);
 }
 
 .boton_signup {
@@ -238,8 +276,14 @@ body {
   padding: 15px;
   width: 100%;
   margin-top: 10px;
+
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
+.reportes_boton_submit:active {
+  transform: scale(0.96);
+}
 /* Contenedor para el botón de envío */
 .reportes_contenedor_boton_submit {
   text-align: center;
@@ -378,6 +422,13 @@ body {
   font-weight: 700;
   width: 55vh;
   margin-right: 10%;
+
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.boton_enviar:active {
+  transform: scale(0.96);
 }
 
 .boton_regresar {
@@ -456,6 +507,13 @@ body {
   border-radius: 15px;
   font-weight: 700;
   width: 100%;
+
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.boton_asignacion:active {
+  transform: scale(0.96);
 }
 
 .contenedor_boton_asignacion {
