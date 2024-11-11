@@ -85,12 +85,12 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item ms-3">
-                <a class="nav-link" href="/menuChofer/"
+                <a class="nav-link" href="/menuChofer/?id={{ id }}"
                   >Inicio</a
                 >
               </li>
               <li class="nav-item ms-3">
-                <a class="nav-link" href="/viajesDisponibles/"
+                <a class="nav-link" href="/viajesDisponibles/?id={{ id }}"
                   >Viajes Disponibles</a
                 >
               </li>
@@ -132,6 +132,9 @@
             if (!querySnapshot.empty) {
               const doc = querySnapshot.docs[0];
               const tipoUsuario = doc.data().tipo;
+              const nombreUsuario = doc.data().nombre; 
+              window.nombreChofer = nombreUsuario; 
+              console.log(nombreUsuario);
               if (tipoUsuario !== 3) { 
                 // Redirigir si el tipo de usuario no es 1
                 window.location.href = "/menuMonitorista"; 
@@ -149,6 +152,7 @@
           // Redirigir al login si no hay sesión iniciada
           window.location.href = "/"; 
         }
+        
       });
   
       // Cerrar sesión

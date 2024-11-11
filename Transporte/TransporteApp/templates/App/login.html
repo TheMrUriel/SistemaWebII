@@ -138,10 +138,11 @@
                 if (!querySnapshot.empty) {
                   const doc = querySnapshot.docs[0]; // Obtener el primer documento que coincida
                   const tipoUsuario = doc.data().tipo;
+                  const id = doc.data().uid;
                   if (tipoUsuario === 1) {
                     window.location.href = "/menuMonitorista";
                   } else if (tipoUsuario === 3) {
-                    window.location.href = "/menuChofer";
+                    window.location.href = `/menuChofer/?id=${id}`; 
                   } else {
                     // Manejar otros tipos de usuario o errores
                     alert("Tipo de usuario no válido");

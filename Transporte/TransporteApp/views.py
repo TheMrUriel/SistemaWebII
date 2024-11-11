@@ -124,7 +124,8 @@ def sign_up(request):
 
 # --------------------------------------------------------- Chofer
 def menu_chofer(request):
-    return render(request, 'App/chofer_menu.html')
+    id_chofer = request.GET.get('id')  # Obtiene el id de la URL
+    return render(request, 'App/chofer_menu.html', {'id': id_chofer}) 
 
 def reportes(request):
     return render(request, 'App/chofer_reporte.html')
@@ -133,7 +134,27 @@ def evidencia(request):
     return render(request, 'App/chofer_evidencia.html')
 
 def chofer_viajes(request):
-    return render(request, 'App/chofer_viajes.html')
+    id_chofer = request.GET.get('id')  # Obtiene el id de la URL
+    
+    # Buscar en la colección 'usuarios' el documento que tenga el campo 'uid' igual a id_chofer
+    usuario_documento = obtener_documentos(
+        'usuarios', 
+        filtros=[('uid', '==', id_chofer)]
+    )
+
+    if usuario_documento:
+        nombre_chofer = usuario_documento[0].get('nombre')  # Extraer el nombre del chofer del primer documento obtenido
+
+        # Filtrar en la colección 'viajes2' los documentos donde el campo 'nombre' es igual al nombre del chofer
+        viajes = obtener_documentos(
+            'viajes2', 
+            filtros=[('chofer', '==', nombre_chofer)]
+        )
+    else:
+        viajes = []  # Si no se encuentra el usuario, asignar una lista vacía
+
+    context = {'viajes': viajes, 'id': id_chofer}
+    return render(request, 'App/chofer_viajes.html', context)
 
 # ------------------------------------------------------------------ Monitorista
 def menu_monitorista(request):
