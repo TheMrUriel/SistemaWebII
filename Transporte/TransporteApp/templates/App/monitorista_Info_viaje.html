@@ -1,3 +1,4 @@
+monitorista_info_viaje.html
 {% extends 'conex/Encabezado_monitorista.html' %} {% block content %}
 <!DOCTYPE html>
 <html lang="en">
@@ -20,15 +21,57 @@
           </div>
           <div class="monitoreo_contenedor_datos">
             <p>Información de viaje</p>
+ 
+          datos.
+          <table border="1" style="color:white; border-style: hidden; max-width: 350px;"  >
+            <tr>
+              <td>Camión: </td>
+              <td>{{ datos.0.camion }}</td>
+            </tr>
+            <tr> </tr>
+            <tr>
+              <td>Chofer: </td>
+              <td>{{ datos.0.chofer }}</td>
+            </tr>
+            <tr> </tr>
+            <tr>
+              <td>Cliente: </td>
+              <td>{{ datos.0.cliente }}</td>
+            </tr>
+            <tr> </tr>
+            <tr>
+              <td>Cporte: </td>
+              <td>{{ datos.0.cporte }}</td>
+            </tr>
+            <tr> </tr>
+            <tr>
+              <td>Destino: </td>
+              <td>{{ datos.0.destino }}</td>
+            </tr>
+            <tr> </tr>
+            <tr>
+              <td>Estado: </td>
+              <td>{{ datos.0.estado }}</td>
+            </tr>
+            <tr> </tr>
+            <tr>
+              <td>Origen: </td>
+              <td>{{ datos.0.origen }}</td>
+            </tr>
+            <tr> </tr>
+            <tr>
+              <td>Sello: </td>
+              <td>{{ datos.0.sello }}</td>
+            </tr>
+           
+           
+        </table>
+           
           </div>
         </div>
-        <div class="monitoreo_contenedor_botones_juntos">
-          <div class="monitoreo_contenedor_botones">
-            <a href="#" class="boton_tiempo">Tiempo Transcurrido</a>
-          </div>
-          <div class="monitoreo_contenedor_botones">
-            <a href="/viajes/" class="boton_regresar">Regresar</a>
-          </div>
+        <div class="monitoreo_contenedor_botones">
+          <a href="#" class="boton_tiempo">Tiempo Transcurrido</a>
+          <a href="/viajes/" class="boton_regresar">Regresar</a>
         </div>
       </div>
     </section>

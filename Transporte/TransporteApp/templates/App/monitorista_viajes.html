@@ -14,7 +14,30 @@
             <h2 class="viajes_titulo">Monitoreo de Viajes</h2>
         </div>
         <div class="viajes_contenedor_contenido">
+ 
+            {% for viaje2 in viajes2 %}
+ 
             <div class="viajes_contenedor_viaje">
+                <div class="viajes_contenedor_imagen">
+                    <p>Aquí va una imagen</p>
+                </div>
+                <div class="viajes_contenedor_informacion">
+                    <p class="viajes_informacion"><strong>Titulo: </strong>
+                    <label> {{ viaje2.chofer }}</label>
+                    </p>
+                </div>
+                <div class="viajes_contenedor_boton">
+                <a href="/informacion/?dato_estatico={{ viaje2.chofer }}" class="viajes_boton_noiniciado" >No Iniciado</a>
+                </div>
+            </div>
+ 
+ 
+            {% endfor %}
+           
+       
+ 
+            <!--        
+                <div class="viajes_contenedor_viaje">
                 <div class="viajes_contenedor_imagen">
                     <p>Aquí va una imagen</p>
                 </div>
@@ -47,6 +70,7 @@
                     <a href="/informacion/" class="viajes_boton_completado">Completado</a>
                 </div>
             </div>
+             -->
         </div>
     </section>
   </body>

@@ -83,9 +83,6 @@ def crear_viaje(request):
 
     return JsonResponse({'error': 'Método no permitido'}, status=405)
 
-def home(request):
-    return render(request, 'App/monitorista_viajes.html')
-
 def log_in(request):
     return render(request, 'App/login.html')
 
@@ -161,7 +158,15 @@ def menu_monitorista(request):
     return render(request, 'App/monitorista_menu.html')
 
 def viaje_info(request):
-    return render(request, 'App/monitorista_info_viaje.html')
+    """
+    Vista para obtener y renderizar documentos de la colección 'viajes2' filtrados por nombres.
+    """
+    dato_estatico = request.GET.get('dato_estatico')
+    datos = obtener_documentos('viajes2', filtros=[('chofer', '==', dato_estatico)])
+    context3 = {'datos': datos}
+    return render(request, 'App/monitorista_info_viaje.html', context3)
+ 
+
 
 def asignar_viaje(request):
     choferes = obtener_documentos('choferes')
@@ -171,7 +176,12 @@ def asignar_viaje(request):
     return render(request, 'App/monitorista_asignacion.html', context)
 
 def viajes(request):
-    return render(request, 'App/monitorista_viajes.html')
+    """
+    Vista para obtener y renderizar documentos de la colección 'viajes2' en la página HTML.
+    """
+    viajeprueba = obtener_documentos('viajes2')
+    context2 = {'viajes2': viajeprueba}
+    return render(request, 'App/monitorista_viajes.html', context2)
 
 # ------------------------------------------------------------------- Archivo de prueba de Base de datos
 def bd(request):
