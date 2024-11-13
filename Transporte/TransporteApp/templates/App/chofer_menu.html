@@ -14,7 +14,6 @@
                 <h2 class="menu_titulo">Bienvenido "usuario"</h2>
             </div>
             <div class="menu_contenedor_contenido">
-
                 <div class="menu_contenido_enlace">
                     <div class="menu_contenedor_enlace_imagen">
                         <img src="{% static 'TransporteApp/chofer_viajes.png' %}" class="menu_chofer_viajesDisponibles" alt="Viajes disponibles del chofer">
@@ -23,20 +22,14 @@
                         <a href="/viajesDisponibles/?id={{ id }}"><div>Viajes Disponibles</div></a>
                     </div>
                 </div>
-
                 <div class="menu_contenido_enlace">
-                    <div class="menu_contenido_enlace_juntos">
-                            <a href="/reportes/">
-                            <div class="menu_contenedor_enlace_imagen">
-                                <img class="menu_chofer_viajesDisponibles" src="{% static 'TransporteApp/chofer_reporte.png' %}" alt="Reportar algún problema">
-                            </div>
-                            <div class="menu_contenedor_enlace_titulo">
-                                <div class="menu_enlace_titulo">Reportar Problema</div>
-                            </div>
-                        </a>
+                    <div class="menu_contenedor_enlace_imagen">
+                        <img src="{% static 'TransporteApp/chofer_reporte.png' %}" class="menu_chofer_viajesDisponibles" alt="Viajes disponibles del chofer"></a>
+                    </div>
+                    <div class="menu_contenedor_enlace_titulo">
+                        <a href="/reportes/"><div>Reportar Problema</div></a>
                     </div>
                 </div>
-
             </div>
         </section>
     </body>

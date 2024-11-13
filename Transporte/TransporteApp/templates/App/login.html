@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {%load static%}
     <link rel="stylesheet" href="{% static 'TransporteApp/style.css' %}" />
     <title>Iniciar Sesión</title>
@@ -11,7 +11,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
 
     <script>
-      const firebaseConfig = {
+       const firebaseConfig = {
         apiKey: "AIzaSyCDdHMlS8qfiiVfdFvQIe3GoiZVssLCkMM",
         authDomain: "tgvg-foraneos.firebaseapp.com",
         databaseURL: "https://tgvg-foraneos.firebaseio.com",
@@ -19,7 +19,7 @@
         storageBucket: "tgvg-foraneos.appspot.com",
         messagingSenderId: "230877081732",
         appId: "1:230877081732:web:b78113f20ad5cb699412d1",
-        measurementId: "G-KFXQZZJCJJ",
+        measurementId: "G-KFXQZZJCJJ"
       };
 
       // Inicializa Firebase
@@ -33,90 +33,87 @@
       auth.onAuthStateChanged((user) => {
         if (user) {
           // Hay un usuario con sesión iniciada
-          db.collection("usuarios")
-            .where("email", "==", user.email)
-            .get()
-            .then((querySnapshot) => {
-              if (!querySnapshot.empty) {
-                const doc = querySnapshot.docs[0];
-                const tipoUsuario = doc.data().tipo;
-                if (tipoUsuario === 1) {
-                  window.location.href = "/home";
-                } else if (tipoUsuario === 3) {
-                  window.location.href = "/viajesDisponibles";
-                } else {
-                  alert("Tipo de usuario no válido");
-                }
+          db.collection('usuarios').where('email', '==', user.email).get()
+          .then((querySnapshot) => {
+            if (!querySnapshot.empty) {
+              const doc = querySnapshot.docs[0];
+              const tipoUsuario = doc.data().tipo;
+              if (tipoUsuario === 1) {
+                window.location.href = "/home";
+              } else if (tipoUsuario === 3) {
+                window.location.href = "/viajesDisponibles";
               } else {
-                alert("El usuario no existe");
+                alert("Tipo de usuario no válido");
               }
-            })
-            .catch((error) => {
-              console.error("Error al obtener el tipo de usuario: ", error);
-            })
-            .finally(() => {
-              // Ocultar la pantalla de carga al final
-              document.getElementById("loading-screen").style.display = "none";
-            });
+            } else {
+              alert("El usuario no existe");
+            }
+          })
+          .catch((error) => {
+            console.error("Error al obtener el tipo de usuario: ", error);
+          })
+          .finally(() => {
+            // Ocultar la pantalla de carga al final
+            document.getElementById("loading-screen").style.display = "none";
+          });
         } else {
           // No hay sesión iniciada, ocultar la pantalla de carga
           document.getElementById("loading-screen").style.display = "none";
         }
       });
+
     </script>
-  </head>
+    </head>
 
   <body>
     <section class="contenedor_principal">
       <div class="contenedor_logo">
-        <img
-          src="{% static 'TransporteApp/logo.png' %}"
-          class="logo"
-          alt="Logo de la empresa"
-        />
+        <img src="{% static 'TransporteApp/logo.png' %}" class="logo" alt="Logo de la empresa">
       </div>
 
       <div class="contenedor_formulario">
         <div class="contenedor_formulario_titulo">
-          <h2 class="formulario_titulo">Bienvenido!</h2>
+          <h2 class="formulario_titulo">Bienvenido</h2>
         </div>
         <div class="contenedor_formulario_cuerpo">
           <form id="login-form">
             {% csrf_token %}
             <div class="contenedor_formulario_inputs">
               <label for="username">
-                <span class="input_titulo"> Email </span>
+                <span class="input_titulo">
+                  Usuario
+                </span>
               </label>
               <div class="contenedor_input_contenido">
-                <input
-                  type="text"
-                  class="input_contenido"
-                  name="email"
-                  id="email"
-                  placeholder="Email"
-                />
+                <input type="text" class="input_contenido" name="email" id="email" placeholder="Usuario">
               </div>
             </div>
             <div class="contenedor_formulario_inputs">
               <label for="password">
-                <span class="input_titulo"> Contraseña </span>
+                <span class="input_titulo">
+                  Contraseña
+                </span>
               </label>
               <div class="contenedor_input_contenido">
-                <input
-                  type="password"
-                  class="input_contenido"
-                  name="password"
-                  id="password"
-                  placeholder="Contraseña"
-                />
+                <input type="password" class="input_contenido" name="password" id="password" placeholder="Contraseña">
               </div>
             </div>
-
+            <div class="contenedor_formulario_inputs">
+              <input type="checkbox" id="remember_me">
+              <label for="remember_me">
+                <span class="input_titulo">
+                  Recuerdame
+                </span>
+              </label>
+            </div>
+            <div class="contenedor_formulario_inputs">
+              <div class="contenedor_enlace_contrasena">
+                <a href="#" class="enlace_contrasena">Olvido su contraseña?</a>
+              </div>
+            </div>
             <div class="contenedor_formulario_inputs">
               <div class="contenedor_boton_login">
-                <button type="submit" class="boton_login">
-                  Iniciar Sesión
-                </button>
+                <button type="submit" class="boton_login">Iniciar Sesión</button>
               </div>
             </div>
             <div class="contenedor_formulario_inputs">
@@ -158,26 +155,12 @@
               .catch((error) => {
                 alert("Error al iniciar sesión: " + error.message);
               });
+            });
           </script>
         </div>
       </div>
     </section>
-    <div
-      id="loading-screen"
-      style="
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        color: #fff;
-        background-color: rgba(0, 0, 0);
-        z-index: 1000;
-      "
-    >
+    <div id="loading-screen" style="display: flex; justify-content: center; align-items: center; position: fixed; top: 0; left: 0; width: 100%; height: 100%; color:#fff; background-color: rgba(0, 0, 0); z-index: 1000;">
       <div class="spinner-border text-primary" role="status">
         <span class="sr-only" color="white">Cargando...</span>
       </div>
