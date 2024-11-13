@@ -13,7 +13,7 @@ body {
 ------------------------------------------------------------------------------------- */
 .menu_chofer_viajesDisponibles {
   filter: drop-shadow(-2px 2px 15px rgba(255, 255, 255, 0.5));
-  width: 10%;
+  width: 150px;
 }
 
 .menu_titulo {
@@ -36,13 +36,51 @@ body {
   background-color: #212429;
   border: 2px solid #4f5461;
   border-radius: 15px;
-  text-align: center;
   padding-top: 10px;
   padding-bottom: 10px;
 
   width: 40%;
+  height: 300px;
+
+  display: flex;
+  justify-content: center;
 }
 
+.menu_contenedor_enlace_imagen {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  max-width: 100%;
+}
+
+.menu_contenedor_enlace_titulo {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.menu_contenido_enlace_juntos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.menu_contenido_enlace_juntos:active {
+  transform: scale(0.96);
+}
+
+.enlace_prueba {
+  margin: 0 auto;
+}
+
+.menu_enlace_titulo {
+  font-weight: 700;
+}
 
 
 /* ----------------------------------------------------------------------------------
@@ -94,6 +132,13 @@ body {
   border-radius: 15px;
   font-weight: 700;
   width: 55vh;
+
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.boton_login:active {
+  transform: scale(0.96);
 }
 
 .boton_signup {
@@ -103,11 +148,19 @@ body {
   border: none;
   border-radius: 15px;
   font-weight: 700;
-  padding: 13px 23vh;
+  padding: 13px 21vh;
+  max-width: 100%;
 }
 
 .contenedor_boton_signup {
   margin-top: 30px;
+
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.contenedor_boton_signup:active {
+  transform: scale(0.96);
 }
 
 .contenedor_formulario_inputs {
@@ -238,8 +291,14 @@ body {
   padding: 15px;
   width: 100%;
   margin-top: 10px;
+
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
+.reportes_boton_submit:active {
+  transform: scale(0.96);
+}
 /* Contenedor para el botón de envío */
 .reportes_contenedor_boton_submit {
   text-align: center;
@@ -342,6 +401,15 @@ body {
   margin-bottom: 30px;
 }
 
+.disponible_contenedor_boton {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.disponible_contenedor_boton:active {
+  transform: scale(0.96);
+}
+
 /* ----------------------------------------------------------------------------------
                                     
                             CHOFER - SUBIR EVIDENCIA
@@ -369,6 +437,11 @@ body {
   margin-bottom: 1%;
 }
 
+.evidencia_contenedor_botones_juntos {
+  display: flex;
+  flex-direction: row;
+}
+
 .boton_enviar {
   color: #fafafa;
   background-color: #fad34a;
@@ -388,6 +461,15 @@ body {
   border-radius: 15px;
   font-weight: 700;
   padding: 15px 10%;
+}
+
+.evidencia_contenedor_boton_enviar {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.evidencia_contenedor_boton_enviar:active {
+  transform: scale(0.96);
 }
 
 .evidencia_contenedor_formulario {
@@ -456,6 +538,13 @@ body {
   border-radius: 15px;
   font-weight: 700;
   width: 100%;
+
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.boton_asignacion:active {
+  transform: scale(0.96);
 }
 
 .contenedor_boton_asignacion {
@@ -514,6 +603,15 @@ body {
 
   display: flex;
   justify-content: space-around;
+}
+
+.viajes_contenedor_boton {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.viajes_contenedor_boton:active {
+  transform: scale(0.96);
 }
 
 .viajes_boton_noiniciado {
@@ -599,7 +697,11 @@ p {
   border: none;
   border-radius: 15px;
   font-weight: 700;
-  padding: 15px 10%;
+  padding: 15px 21vh;
+}
+
+.boton_regresar {
+  padding: 15px 21vh;
 }
 
 .monitoreo_contenedor_informacion {
@@ -609,9 +711,22 @@ p {
   height: 80%;
 }
 
+.monitoreo_contenedor_botones_juntos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
 .monitoreo_contenedor_botones {
   display: flex;
-  align-items: end;
-  justify-content: space-evenly;
+  align-items: center;
   margin-top: 1%;
+
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.monitoreo_contenedor_botones:active {
+  transform: scale(0.96);
 }

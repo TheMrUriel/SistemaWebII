@@ -14,22 +14,33 @@
                 <h2 class="menu_titulo">Bienvenido "usuario"</h2>
             </div>
             <div class="menu_contenedor_contenido">
+
                 <div class="menu_contenido_enlace">
-                    <div class="menu_contenedor_enlace_imagen">
-                        <img src="{% static 'TransporteApp/monitorista_asignar.png' %}" class="menu_chofer_viajesDisponibles" alt="Viajes disponibles del chofer">
-                    </div>
-                    <div class="menu_contenedor_enlace_titulo">
-                        <a href="/asignacion/"><div>Asignar Viaje</div></a>
+                    <div class="menu_contenido_enlace_juntos">
+                            <a href="/asignacion/">
+                            <div class="menu_contenedor_enlace_imagen">
+                                <img class="menu_chofer_viajesDisponibles" src="{% static 'TransporteApp/monitorista_asignar.png' %}" alt="Asignar viajes">
+                            </div>
+                            <div class="menu_contenedor_enlace_titulo">
+                                <div class="menu_enlace_titulo">Asignar Viaje</div>
+                            </div>
+                        </a>
                     </div>
                 </div>
+
                 <div class="menu_contenido_enlace">
-                    <div class="menu_contenedor_enlace_imagen">
-                        <img src="{% static 'TransporteApp/monitorista_estados.png' %}" class="menu_chofer_viajesDisponibles" alt="Viajes disponibles del chofer"></a>
-                    </div>
-                    <div class="menu_contenedor_enlace_titulo">
-                        <a href="/viajes/"><div>Estado de Viajes</div></a>
+                    <div class="menu_contenido_enlace_juntos">
+                            <a href="/viajes/">
+                            <div class="menu_contenedor_enlace_imagen">
+                                <img class="menu_chofer_viajesDisponibles" src="{% static 'TransporteApp/monitorista_estados.png' %}" alt="Estado de los viajes">
+                            </div>
+                            <div class="menu_contenedor_enlace_titulo">
+                                <div class="menu_enlace_titulo">Estado de Viajes</div>
+                            </div>
+                        </a>
                     </div>
                 </div>
+
             </div>
         </section>
     </body>
