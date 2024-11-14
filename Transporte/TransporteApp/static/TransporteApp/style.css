@@ -31,7 +31,6 @@ body {
   flex-wrap: wrap;
 }
 
-
 .menu_contenido_enlace {
   color: #d6d6de;
   background-color: #212429;
@@ -84,7 +83,6 @@ body {
 .menu_enlace_titulo {
   font-weight: 700;
 }
-
 
 /* ----------------------------------------------------------------------------------
                                     
@@ -151,7 +149,7 @@ body {
   border: none;
   border-radius: 15px;
   font-weight: 700;
-  padding: 13px 21vh;
+  padding: 13px 42%;
   max-width: 100%;
 }
 
@@ -739,7 +737,6 @@ p {
   transform: scale(0.96);
 }
 
-
 /* ----------------------------------------------------------------------------------
                                     
                                       CRUD
@@ -778,4 +775,3 @@ p {
 .eliminar_boton_asignacion:active {
   transform: scale(0.96);
 }
-

@@ -156,7 +156,7 @@ SOCIALACCOUNT_PROVIDERS = {
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-LOGIN_REDIRECT_URL ='home/'
+
 ACCOUNT_EMAIL_REQUIRED=True
 
 DATA_UPLOAD_MAX_NUMBER_FIELDS = None
