@@ -75,7 +75,7 @@
       <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
           <h4 style="color: #ffffff">
-            <a href="/menuChofer/?id={{ id }}">Transportes Vargas</a>
+            <a href="/menu/chofer/?id={{ id }}">Transportes Vargas</a>
           </h4>
           <button
             class="navbar-toggler"
@@ -91,15 +91,15 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item ms-3">
-                <a class="nav-link" href="/menuChofer/?id={{ id }}">Inicio</a>
+                <a class="nav-link" href="/menu/chofer?id={{ id }}">Inicio</a>
               </li>
               <li class="nav-item ms-3">
-                <a class="nav-link" href="/viajesDisponibles/?id={{ id }}"
+                <a class="nav-link" href="/viajes/disponible?id={{ id }}"
                   >Viajes Disponibles</a
                 >
               </li>
               <li class="nav-item ms-3">
-                <a class="nav-link" href="/reportes/?id={{ id }}"
+                <a class="nav-link" href="/viajes/reporte?id={{ id }}"
                   >Reportar Problema</a
                 >
               </li>
@@ -147,7 +147,7 @@
                 console.log(nombreUsuario);
                 if (tipoUsuario !== 3) {
                   // Redirigir si el tipo de usuario no es 1
-                  window.location.href = "/menuMonitorista";
+                  window.location.href = "/menu/monitorista";
                 }
               } else {
                 alert("El usuario no existe");

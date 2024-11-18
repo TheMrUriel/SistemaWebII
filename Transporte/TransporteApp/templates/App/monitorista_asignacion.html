@@ -114,7 +114,7 @@
                       .then(response => response.json())
                       .then(data => {
                         if (data.mensaje) {
-                            window.location.href = '/viajes/';  
+                            window.location.href = '/viajes/estados';  
                           // Puedes redirigir a otra página o actualizar la vista
                         } else if (data.error) {
                           alert('Error: ' + data.error);  // Mostrar mensaje de error

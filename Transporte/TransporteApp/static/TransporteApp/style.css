@@ -28,8 +28,8 @@ body {
 .menu_contenedor_contenido {
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
-
 
 .menu_contenido_enlace {
   color: #d6d6de;
@@ -44,6 +44,8 @@ body {
 
   display: flex;
   justify-content: center;
+
+  margin-bottom: 30px;
 }
 
 .menu_contenedor_enlace_imagen {
@@ -81,7 +83,6 @@ body {
 .menu_enlace_titulo {
   font-weight: 700;
 }
-
 
 /* ----------------------------------------------------------------------------------
                                     
@@ -148,8 +149,12 @@ body {
   border: none;
   border-radius: 15px;
   font-weight: 700;
-  padding: 13px 21vh;
+  padding: 13px 42%;
   max-width: 100%;
+}
+
+.contenedor_boton_login {
+  margin-top: 20px;
 }
 
 .contenedor_boton_signup {
@@ -549,6 +554,7 @@ body {
 
 .contenedor_boton_asignacion {
   text-align: center;
+  margin-top: 30px;
 }
 
 /* Ajustes responsivos */
@@ -728,5 +734,44 @@ p {
 }
 
 .monitoreo_contenedor_botones:active {
+  transform: scale(0.96);
+}
+
+/* ----------------------------------------------------------------------------------
+                                    
+                                      CRUD
+
+------------------------------------------------------------------------------------- */
+.editar_boton_asignacion {
+  color: #fafafa;
+  background-color: #4dfa4a;
+  padding: 15px;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  width: 100%;
+
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.editar_boton_asignacion:active {
+  transform: scale(0.96);
+}
+
+.eliminar_boton_asignacion {
+  color: #fafafa;
+  background-color: #fa6161;
+  padding: 15px;
+  border: none;
+  border-radius: 15px;
+  font-weight: 700;
+  width: 100%;
+
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.eliminar_boton_asignacion:active {
   transform: scale(0.96);
 }

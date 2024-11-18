@@ -42,9 +42,9 @@
               const doc = querySnapshot.docs[0];
               const tipoUsuario = doc.data().tipo;
               if (tipoUsuario === 1) {
-                window.location.href = "/home";
-              } else if (tipoUsuario === 3) {
-                window.location.href = "/viajesDisponibles";
+                window.location.href = "/menu/monitorista";
+                } else if (tipoUsuario === 3) {
+                  window.location.href = "/menu/chofer";
               } else {
                 alert("Tipo de usuario no válido");
               }

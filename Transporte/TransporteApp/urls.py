@@ -8,17 +8,19 @@ urlpatterns = [
 
 
     # ----------------------------------------------------------------- Chofer
-    path('menuChofer/', views.menu_chofer, name = 'menuChofer'),
-    path('reportes/', views.reportes, name = 'reportes'),
-    path('evidencia/', views.evidencia, name = 'evidencia'),
-    path('viajesDisponibles/', views.chofer_viajes, name = 'viajesDisponibles'),
+    path('menu/chofer', views.menu_chofer, name = 'menuChofer'),
+    path('viajes/reporte', views.reportes, name = 'reportes'),
+    path('viajes/disponible/evidencia', views.evidencia, name = 'evidencia'),
+    path('viajes/disponible', views.chofer_viajes, name = 'viajesDisponibles'),
 
 
     # ----------------------------------------------------------------  Monitorista
-    path('menuMonitorista/', views.menu_monitorista, name = 'menuMonitorista'),
-    path('viajes/', views.viajes, name = 'viajes'),
-    path('informacion/', views.viaje_info, name = 'informacion'),
-    path('asignacion/', views.asignar_viaje, name = 'asignacion'),
+    path('menu/monitorista', views.menu_monitorista, name = 'menuMonitorista'),
+    path('viajes/estados', views.viajes, name = 'viajes'),
+    path('viajes/informacion', views.viaje_info, name = 'informacion'),
+    path('viajes/asignacion', views.asignar_viaje, name = 'asignacion'),
+    path('editar/vehiculos', views.editar_vehiculo, name = 'editarVehiculo'),
+    path('editar/clientes', views.editar_cliente, name = 'editarCliente'),
 
 
     # ---------------------------------------------------------------- Funciones firestore

@@ -184,6 +184,12 @@ def viajes(request):
     context2 = {'viajes2': viajeprueba}
     return render(request, 'App/monitorista_viajes.html', context2)
 
+def editar_vehiculo(request):
+    return render(request, 'App/monitorista_editar_vehiculo.html')
+
+def editar_cliente(request):
+    return render(request, 'App/monitorista_editar_cliente.html')
+
 # ------------------------------------------------------------------- Archivo de prueba de Base de datos
 def bd(request):
     viajes_ref = db.collection('viajes')  # Referencia a la colección "viajes"
