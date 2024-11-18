@@ -12,7 +12,7 @@
 <body>
     <section class="viajes_contenedor_principal">
         <div class="viajes_contenedor_titulo">
-            <h2 class="viajes_titulo">Monitoreo de Viajes</h2>
+            <h2 class="viajes_titulo">Mis viajes</h2>
         </div>
         <div class="viajes_contenedor_contenido">
             {% for viaje in viajes %}
@@ -22,14 +22,14 @@
                 </div>
                 <div class="viajes_contenedor_informacion">
                     <p class="viajes_informacion">
-                        <strong>Chofer:</strong> {{ viaje.chofer }} <br>
+                        <strong>Unidad:</strong> {{ viaje.camion }} <br>
                         <strong>Origen:</strong> {{ viaje.origen }} <br>
                         <strong>Destino:</strong> {{ viaje.destino }} <br>
                         <strong>Cliente:</strong> {{ viaje.cliente }}
                     </p>
                 </div>
                 <div class="viajes_contenedor_boton">
-                    <a href="/informacion/{{ viaje.id }}" class="viajes_boton_noiniciado">Ver detalles</a>
+                    <a href="/evidencia/{{ viaje.id }}" class="viajes_boton_noiniciado">Ver detalles</a>
                 </div>
             </div>
             {% endfor %}

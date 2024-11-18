@@ -125,7 +125,8 @@ def menu_chofer(request):
     return render(request, 'App/chofer_menu.html', {'id': id_chofer}) 
 
 def reportes(request):
-    return render(request, 'App/chofer_reporte.html')
+    id_chofer = request.GET.get('id')  # Obtiene el id de la URL
+    return render(request, 'App/chofer_reporte.html', {'id': id_chofer})
 
 def evidencia(request):
     return render(request, 'App/chofer_evidencia.html')
