@@ -1,0 +1,58 @@
+{% extends 'conex/Encabezado_monitorista.html' %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'TransporteApp/style.css' %}" />
+    <title>Viajes</title>
+  </head>
+  <body>
+    <section class="viajes_contenedor_principal">
+        <div class="viajes_contenedor_titulo">
+            <h2 class="viajes_titulo">Monitoreo de Viajes</h2>
+        </div>
+        <div class="viajes_contenedor_contenido">
+ 
+            {% for viaje2 in viajes2 %}
+ 
+            <div class="viajes_contenedor_viaje">
+                <div class="viajes_contenedor_imagen">
+                    <p>Aquí va una imagen</p>
+                </div>
+                <div class="viajes_contenedor_informacion">
+                    <p class="viajes_informacion"><strong>Titulo: </strong>
+                    <label> {{ viaje2.chofer }}</label>
+                    </p>
+                </div>
+                <div class="viajes_contenedor_boton">
+                    {% if viaje2.estado == 'asignado' %}
+                        <a href="/viajes/informacion?dato_estatico={{ viaje2.chofer }}" class="viajes_boton_noiniciado">
+                            No iniciado
+                        </a>
+                    {% elif viaje2.estado == 'en curso' %}
+                        <a href="/viajes/informacion?dato_estatico={{ viaje2.chofer }}" class="viajes_boton_encurso">
+                            En curso
+                        </a>
+                    {% elif viaje2.estado == 'terminado' %}
+                        <a href="/viajes/informacion?dato_estatico={{ viaje2.chofer }}" class="viajes_boton_completado">
+                            Completado
+                        </a>
+                    {% else %}
+                        <a href="/viajes/informacion?dato_estatico={{ viaje2.chofer }}" class="viajes_boton_default">
+                            Estado Desconocido
+                        </a>
+                    {% endif %}
+                </div>
+                
+            </div>
+ 
+ 
+            {% endfor %}
+           
+        </div>
+    </section>
+  </body>
+</html>
+{% endblock %}

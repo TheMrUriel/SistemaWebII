@@ -1,0 +1,81 @@
+monitorista_info_viaje.html
+{% extends 'conex/Encabezado_monitorista.html' %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'TransporteApp/style.css' %}" />
+    <title>Información</title>
+  </head>
+  <body>
+    <section class="monitoreo_contenedor_principal">
+      <div class="monitoreo_contenedor_titulo">
+        <h2 class="monitoreo_titulo">Monitoreo de Viajes</h2>
+      </div>
+      <div class="monitoreo_contenedor_contenido">
+        <div class="monitoreo_contenedor_informacion">
+          <div class="monitoreo_contenedor_imagen">
+            <p>Imagén</p>
+          </div>
+          <div class="monitoreo_contenedor_datos">
+            <p>Información de viaje</p>
+ 
+          datos.
+          <table border="1" style="color:white; border-style: hidden; max-width: 350px;"  >
+            <tr>
+              <td>Camión: </td>
+              <td>{{ datos.0.camion }}</td>
+            </tr>
+            <tr> </tr>
+            <tr>
+              <td>Chofer: </td>
+              <td>{{ datos.0.chofer }}</td>
+            </tr>
+            <tr> </tr>
+            <tr>
+              <td>Cliente: </td>
+              <td>{{ datos.0.cliente }}</td>
+            </tr>
+            <tr> </tr>
+            <tr>
+              <td>Cporte: </td>
+              <td>{{ datos.0.cporte }}</td>
+            </tr>
+            <tr> </tr>
+            <tr>
+              <td>Destino: </td>
+              <td>{{ datos.0.destino }}</td>
+            </tr>
+            <tr> </tr>
+            <tr>
+              <td>Estado: </td>
+              <td>{{ datos.0.estado }}</td>
+            </tr>
+            <tr> </tr>
+            <tr>
+              <td>Origen: </td>
+              <td>{{ datos.0.origen }}</td>
+            </tr>
+            <tr> </tr>
+            <tr>
+              <td>Sello: </td>
+              <td>{{ datos.0.sello }}</td>
+            </tr>
+           
+           
+        </table>
+           
+          </div>
+        </div>
+        <div class="monitoreo_contenedor_botones">
+          <a href="#" class="boton_tiempo" style="width: 40%;">Tiempo Transcurrido</a>
+          <a style="width: 30%;"></a>
+          <a href="/viajes/estados" class="boton_regresar"style="width: 30%;">Regresar</a>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
+{% endblock %}
