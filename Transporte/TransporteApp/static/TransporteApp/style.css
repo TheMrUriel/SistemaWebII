@@ -6,6 +6,60 @@ body {
   background-color: #1c1c21;
 }
 
+
+/* ----------------------------------------------------------------------------------
+                                    
+                                      MENÚS
+
+------------------------------------------------------------------------------------- */
+.content-loader {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 10;
+  background: #1c1c21;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: opacity 0.5s, visibility 0.5s;
+}
+
+.loader {
+  width: 20px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #617afa;
+  box-shadow: 0 0 0 0 #586088;
+  animation: l2 1.5s infinite linear;
+  position: relative;
+}
+.loader:before,
+.loader:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 0 0 #586088;
+  animation: inherit;
+  animation-delay: -0.5s;
+}
+.loader:after {
+  animation-delay: -1s;
+}
+@keyframes l2 {
+    100% {box-shadow: 0 0 0 40px #0000}
+}
+
+.content-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+
 /* ----------------------------------------------------------------------------------
                                     
                                       MENÚS

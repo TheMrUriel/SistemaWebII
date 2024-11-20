@@ -6,9 +6,25 @@
     {%load static%}
     <link rel="stylesheet" href="{% static 'TransporteApp/style.css' %}" />
     <title>Registrarse</title>
+
+    <!-- Loader -->
+    <script>
+      window.addEventListener("load", () => {
+        const loader = document.querySelector(".content-loader");
+    
+        loader.classList.add("content-hidden")
+        loader.addEventListener("transitionend", () => {
+          document.body.removeChild(loader);
+        });
+      });
+    </script>
   </head>
 
   <body>
+    <div class="content-loader">
+      <div class="loader"></div>
+    </div>
+
     <section class="contenedor_principal">
       <div class="contenedor_formulario">
         <div class="contenedor_formulario_titulo">
