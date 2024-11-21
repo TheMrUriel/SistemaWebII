@@ -6,7 +6,6 @@ body {
   background-color: #1c1c21;
 }
 
-
 /* ----------------------------------------------------------------------------------
                                     
                                       MENÚS
@@ -51,14 +50,15 @@ body {
   animation-delay: -1s;
 }
 @keyframes l2 {
-    100% {box-shadow: 0 0 0 40px #0000}
+  100% {
+    box-shadow: 0 0 0 40px #0000;
+  }
 }
 
 .content-hidden {
   opacity: 0;
   visibility: hidden;
 }
-
 
 /* ----------------------------------------------------------------------------------
                                     
@@ -782,12 +782,9 @@ p {
   display: flex;
   align-items: center;
   margin-top: 1%;
-
-  cursor: pointer;
-  transition: transform 0.2s ease;
 }
 
-.monitoreo_contenedor_botones:active {
+.boton_regresar:active {
   transform: scale(0.96);
 }
 
