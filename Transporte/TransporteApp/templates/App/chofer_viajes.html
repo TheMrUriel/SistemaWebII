@@ -45,7 +45,7 @@
                         viaje
                     </button>
                     {% elif viaje.estado == "asignado" %}
-                    <a href="/viajes/disponible/evidencia?id={{ viaje.id }}" class="disponible_boton_aceptar">Iniciar
+                    <a href="/viajes/disponible/evidencia?id={{ id }}" class="disponible_boton_aceptar">Iniciar
                         viaje</a>
                     {% elif viaje.estado == "terminado" %}
                     <a class="disponible_boton_aceptado">Viaje
