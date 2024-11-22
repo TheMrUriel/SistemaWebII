@@ -75,7 +75,7 @@
       window.addEventListener("load", () => {
         const loader = document.querySelector(".content-loader");
 
-        loader.classList.add("content-hidden")
+        loader.classList.add("content-hidden");
 
         loader.addEventListener("transitionend", () => {
           document.body.removeChild(loader);
@@ -114,11 +114,6 @@
               <li class="nav-item ms-3">
                 <a class="nav-link" href="/viajes/disponible?id={{ id }}"
                   >Viajes Disponibles</a
-                >
-              </li>
-              <li class="nav-item ms-3">
-                <a class="nav-link" href="/viajes/reporte?id={{ id }}"
-                  >Reportar Problema</a
                 >
               </li>
             </ul>
