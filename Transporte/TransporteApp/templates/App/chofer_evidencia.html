@@ -1,35 +1,156 @@
 {% extends 'conex/Encabezado_chofer.html' %} {% block content %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {%load static%}
-    <link rel="stylesheet" href="{% static 'TransporteApp/style.css' %}" />
-    <title>Subir Evidencia</title>
-  </head>
-  <body>
-    <section class="evidencia_contenedor_principal">
-      <div class="evidencia_contenedor_titulo">
-        <h2 class="evidencia_titulo">Subir foto de los documentos para iniciar el viaje</h2>
-      </div>
-      <div class="evidencia_contenedor_contenido">
-        <div class="evidencia_contenedor_formulario">
-          <form action="$" method="post">
-            <div class="evidencia_contenedor_formulario_inputs">
-              <div class="evidencia_contenedor_botones_juntos">
-                <div class="evidencia_contenedor_boton_enviar">
-                  <button type="submit" class="boton_enviar">Enviar</button>
-                </div>
-                <div class="evidencia_contenedor_boton_enviar">
-                  <a href="/viajesDisponibles/{{ viaje.id }}" class="boton_regresar">Regresar</a>
-                </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {%load static%}
+  <link rel="stylesheet" href="{% static 'TransporteApp/style.css' %}" />
+  <title>Subir Evidencia</title>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-storage-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+</head>
+
+<body>
+  <section class="evidencia_contenedor_principal">
+    <div class="evidencia_contenedor_titulo">
+      <h2 class="evidencia_titulo">Subir foto de los documentos para iniciar el viaje</h2>
+    </div>
+    <div class="evidencia_contenedor_contenido">
+      <div class="evidencia_contenedor_formulario">
+        <form action="#" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="evidencia_contenedor_formulario_inputs">
+            <img id="preview" src="#" alt="Vista previa de la imagen" style="display: none; max-width: 300px;">
+            <label for="imagen" class="boton_seleccionar">
+              <span>Seleccionar archivo</span>
+              <input type="file" id="imagen" name="imagen" accept="image/*" required>
+            </label>
+            <div class="evidencia_contenedor_botones_juntos">
+              <div class="evidencia_contenedor_boton_enviar">
+                <button type="submit" class="boton_enviar">Enviar</button>
+              </div>
+              <div class="evidencia_contenedor_boton_enviar">
+                <a href="/viajes/disponible?id={{ id }}" class="boton_regresar">Regresar</a>
               </div>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
-    </section>
-  </body>
+    </div>
+  </section>
+
+  <script>
+    // Inicializa Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyCDdHMlS8qfiiVfdFvQIe3GoiZVssLCkMM",
+      authDomain: "tgvg-foraneos.firebaseapp.com",
+      databaseURL: "https://tgvg-foraneos.firebaseio.com",
+      projectId: "tgvg-foraneos",
+      storageBucket: "tgvg-foraneos.appspot.com",
+      messagingSenderId: "230877081732",
+      appId: "1:230877081732:web:b78113f20ad5cb699412d1",
+      measurementId: "G-KFXQZZJCJJ"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const storage = firebase.storage(); // Obtén la instancia de Firebase Storage
+
+    const inputImagen = document.getElementById('imagen');
+    const previewImagen = document.getElementById('preview');
+    const formulario = document.querySelector('form');
+
+    inputImagen.addEventListener('change', () => {
+      const archivo = inputImagen.files[0];
+      const lector = new FileReader();
+
+      lector.onload = (e) => {
+        previewImagen.src = e.target.result;
+        previewImagen.style.display = 'block';
+      }
+
+      if (archivo) {
+        lector.readAsDataURL(archivo);
+      }
+    });
+
+    formulario.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const archivo = inputImagen.files[0];
+
+      if (archivo) {
+        try {
+          // 1. Sube la imagen a Firebase Storage
+          const storageRef = firebase.storage().ref('images/' + archivo.name);
+          await storageRef.put(archivo);
+          const url = await storageRef.getDownloadURL();
+          console.log('URL de descarga:', url);
+
+          // 2. Obtén el ID del chofer desde el enlace
+          const urlParams = new URLSearchParams(window.location.search);
+          const choferId = urlParams.get('id');
+          if (!choferId) {
+            throw new Error('No se encontró el ID del chofer en el enlace.');
+          }
+          console.log('ID del chofer:', choferId);
+
+          // 3. Busca el nombre del chofer en la colección "usuarios"
+          const db = firebase.firestore();
+          const choferQuery = await db.collection('usuarios')
+            .where('uid', '==', choferId)
+            .get();
+
+          if (choferQuery.empty) {
+            throw new Error('No se encontró el documento del chofer.');
+          }
+
+          // Se asume que el `uid` es único y sólo hay un documento que cumple con la condición
+          const choferDoc = choferQuery.docs[0];
+          const nombreChofer = choferDoc.data().nombre;
+          console.log('Nombre del chofer:', nombreChofer);
+
+          // 4. Busca el viaje en "viajes2" con el estado "asignado" y el chofer correspondiente
+          const viajesQuery = await db.collection('viajes2')
+            .where('chofer', '==', nombreChofer)
+            .where('estado', '==', 'asignado')
+            .get();
+
+          if (viajesQuery.empty) {
+            throw new Error('No se encontró un viaje asignado para este chofer.');
+          }
+
+          // Supongamos que solo hay un documento que cumple la condición
+          const viajeDoc = viajesQuery.docs[0];
+          const viajeId = viajeDoc.id;
+
+          // 5. Actualiza el documento del viaje con los nuevos datos
+          const fechaActual = new Date();
+          const fechaISO = fechaActual.toISOString().split('T')[0];
+          const horaISO = fechaActual.toTimeString().split(' ')[0];
+
+          await db.collection('viajes2').doc(viajeId).update({
+            link_imagen: url,
+            estado: 'en curso',
+            fecha: fechaISO,
+            hora: horaISO,
+          });
+
+          console.log('Documento del viaje actualizado exitosamente.');
+          alert('Imagen subida y datos actualizados exitosamente.');
+
+        } catch (error) {
+          console.error('Error:', error);
+          alert(`Ocurrió un error: ${error.message}`);
+        }
+      }
+    });
+
+
+  </script>
+</body>
+
 </html>
 {% endblock %}

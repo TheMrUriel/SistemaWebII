@@ -1,6 +1,9 @@
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect
 from django.http import JsonResponse, HttpResponse
 from firebase_admin import firestore, auth  # Importar auth para autenticación con Firebase Admin
+from django.utils.timezone import now  # Para obtener la fecha y hora actual
+
 
 # Inicializar Firestore
 db = firestore.client()
@@ -98,18 +101,31 @@ def sign_up(request):
             # Crear usuario en Firebase Authentication
             user = auth.create_user(
                 email=email,
-                password=password  # Usar la contraseña hasheada
+                password=password  # Usar la contraseña proporcionada
             )
 
-            # Crear documento en Firestore
+            # Crear documento en Firestore para el usuario
             datos_usuario = {
                 'email': email,
-                'tipo': rol, 
+                'tipo': rol,
                 'telefono': telefono,
                 'nombre': nombre,
                 'uid': user.uid  # Incluir el UID del usuario de Firebase
             }
             crear_documento('usuarios', datos_usuario)
+
+            # Si el rol es 3, verificar o agregar el chofer a la colección choferes
+            if rol == 3:  # Rol 3 corresponde a chofer
+                # Verificar si ya existe un chofer con este nombre
+                choferes_ref = db.collection('choferes')
+                query = choferes_ref.where('nombre', '==', nombre).limit(1).get()
+
+                if not query:  # Si no existe un documento con este nombre
+                    datos_chofer = {
+                        'nombre': nombre,
+                        'telefono': telefono,  # Puedes incluir más datos si es necesario
+                    }
+                    choferes_ref.add(datos_chofer)  # Crear el nuevo documento
 
             return JsonResponse({'success': True})
 
@@ -129,11 +145,12 @@ def reportes(request):
     return render(request, 'App/chofer_reporte.html', {'id': id_chofer})
 
 def evidencia(request):
-    return render(request, 'App/chofer_evidencia.html')
+    id_chofer = request.GET.get('id')  # Obtiene el id de la URL
+    return render(request, 'App/chofer_evidencia.html', {'id': id_chofer})
 
 def chofer_viajes(request):
     id_chofer = request.GET.get('id')  # Obtiene el id de la URL
-    
+
     # Buscar en la colección 'usuarios' el documento que tenga el campo 'uid' igual a id_chofer
     usuario_documento = obtener_documentos(
         'usuarios', 
@@ -143,17 +160,47 @@ def chofer_viajes(request):
     if usuario_documento:
         nombre_chofer = usuario_documento[0].get('nombre')  # Extraer el nombre del chofer del primer documento obtenido
 
-        # Filtrar en la colección 'viajes2' los documentos donde el campo 'nombre' es igual al nombre del chofer
+        # Filtrar en la colección 'viajes2' los documentos donde el campo 'chofer' es igual al nombre del chofer
         viajes = obtener_documentos(
             'viajes2', 
             filtros=[('chofer', '==', nombre_chofer)]
         )
+
+        # Diccionario para asignar prioridad a los estados
+        estados_prioridad = {'asignado': 1, 'en curso': 2, 'terminado': 3}
+
+        # Ordenar los viajes según el estado
+        viajes_ordenados = sorted(
+            viajes, 
+            key=lambda v: estados_prioridad.get(v.get('estado', ''), 4)
+        )
     else:
-        viajes = []  # Si no se encuentra el usuario, asignar una lista vacía
+        viajes_ordenados = []  # Si no se encuentra el usuario, asignar una lista vacía
 
-    context = {'viajes': viajes, 'id': id_chofer}
+    # Pasar los viajes ordenados al contexto
+    context = {'viajes': viajes_ordenados, 'id': id_chofer}
     return render(request, 'App/chofer_viajes.html', context)
+    
 
+@csrf_exempt 
+def iniciar_viaje(request):
+  if request.method == 'POST':
+    try:
+      data = json.loads(request.body)
+      imagen_url = data.get('imagen_url')
+
+      # Guardar la URL en Firestore
+      doc_ref = db.collection('tu_coleccion').document()  # Reemplaza 'tu_coleccion' con el nombre de tu colección
+      doc_ref.set({
+          'imagen_url': imagen_url,
+          # Otros campos que desees guardar
+      })
+
+      return JsonResponse({'mensaje': 'URL guardada en Firestore'})
+    except Exception as e:
+      return JsonResponse({'error': str(e)}, status=500)
+  else:
+    return JsonResponse({'error': 'Método no permitido'}, status=405)
 # ------------------------------------------------------------------ Monitorista
 def menu_monitorista(request):
     return render(request, 'App/monitorista_menu.html')
@@ -166,7 +213,6 @@ def viaje_info(request):
     datos = obtener_documentos('viajes2', filtros=[('chofer', '==', dato_estatico)])
     context3 = {'datos': datos}
     return render(request, 'App/monitorista_info_viaje.html', context3)
- 
 
 
 def asignar_viaje(request):
@@ -179,10 +225,24 @@ def asignar_viaje(request):
 def viajes(request):
     """
     Vista para obtener y renderizar documentos de la colección 'viajes2' en la página HTML.
+    Los documentos se ordenan por estado: asignado -> en curso -> terminado.
     """
+    # Obtener los documentos de la colección 'viajes2'
     viajeprueba = obtener_documentos('viajes2')
-    context2 = {'viajes2': viajeprueba}
+
+    # Diccionario para asignar prioridad a los estados
+    estados_prioridad = {'asignado': 1, 'en curso': 2, 'terminado': 3}
+
+    # Ordenar los documentos según el estado
+    viajeprueba_ordenado = sorted(
+        viajeprueba, 
+        key=lambda v: estados_prioridad.get(v.get('estado', ''), 4)
+    )
+
+    # Pasar los datos ordenados al contexto
+    context2 = {'viajes2': viajeprueba_ordenado}
     return render(request, 'App/monitorista_viajes.html', context2)
+
 
 def editar_vehiculo(request):
     return render(request, 'App/monitorista_editar_vehiculo.html')

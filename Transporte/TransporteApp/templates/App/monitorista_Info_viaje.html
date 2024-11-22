@@ -1,78 +1,125 @@
-monitorista_info_viaje.html
-{% extends 'conex/Encabezado_monitorista.html' %} {% block content %}
+{% extends 'conex/Encabezado_monitorista.html' %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {%load static%}
+    {% load static %}
     <link rel="stylesheet" href="{% static 'TransporteApp/style.css' %}" />
     <title>Información</title>
+    <script>
+      function calcularTiempoTranscurrido() {
+        // Obtener los valores de fecha y hora
+        const fecha = "{{ datos.0.fecha }}";
+        const hora = "{{ datos.0.hora }}";
+        const fechaLlegada = "{{ datos.0.fecha_llegada }}";
+        const horaLlegada = "{{ datos.0.hora_llegada }}";
+
+        // Comprobamos si existe fecha de inicio
+        if (!fecha || !hora) {
+          document.getElementById('tiempoTranscurrido').innerText = "00:00";
+          return;
+        }
+
+        // Crear el objeto de fecha y hora inicial
+        const fechaHoraInicio = new Date(`${fecha}T${hora}`);
+
+        // Si no existe la fecha de llegada, calculamos con la fecha y hora actual
+        let fechaHoraFin;
+        if (fechaLlegada && horaLlegada) {
+          fechaHoraFin = new Date(`${fechaLlegada}T${horaLlegada}`);
+        } else {
+          fechaHoraFin = new Date(); // Usar la fecha y hora actuales
+        }
+
+        // Calcular la diferencia en milisegundos
+        const diferencia = fechaHoraFin - fechaHoraInicio;
+
+        // Convertir la diferencia a horas y minutos
+        const horas = Math.floor(diferencia / 3600000); // 1 hora = 3600000 ms
+        const minutos = Math.floor((diferencia % 3600000) / 60000); // 1 minuto = 60000 ms
+
+        // Mostrar el tiempo transcurrido
+        document.getElementById('tiempoTranscurrido').innerText = `${String(horas).padStart(2, '0')}:${String(minutos).padStart(2, '0')}`;
+      }
+      
+      // Llamamos a la función cuando la página se carga
+      window.onload = calcularTiempoTranscurrido;
+    </script>
   </head>
   <body>
     <section class="monitoreo_contenedor_principal">
       <div class="monitoreo_contenedor_titulo">
-        <h2 class="monitoreo_titulo">Monitoreo de Viajes</h2>
+        <h2 class="monitoreo_titulo">Informacion del viaje</h2>
       </div>
       <div class="monitoreo_contenedor_contenido">
         <div class="monitoreo_contenedor_informacion">
           <div class="monitoreo_contenedor_imagen">
-            <p>Imagén</p>
+            {% if datos.0.link_imagen %}
+              <img src="{{ datos.0.link_imagen }}" alt="Evidencia del viaje"
+                   style="max-width: 200px; margin: 0 auto; max-height: 200px; display: block; object-fit: contain; border-radius: 8px;">
+            {% else %}
+              <p>Viaje no iniciado</p>
+            {% endif %}
           </div>
           <div class="monitoreo_contenedor_datos">
-            <p>Información de viaje</p>
- 
-          datos.
-          <table border="1" style="color:white; border-style: hidden; max-width: 350px;"  >
-            <tr>
-              <td>Camión: </td>
-              <td>{{ datos.0.camion }}</td>
-            </tr>
-            <tr> </tr>
-            <tr>
-              <td>Chofer: </td>
-              <td>{{ datos.0.chofer }}</td>
-            </tr>
-            <tr> </tr>
-            <tr>
-              <td>Cliente: </td>
-              <td>{{ datos.0.cliente }}</td>
-            </tr>
-            <tr> </tr>
-            <tr>
-              <td>Cporte: </td>
-              <td>{{ datos.0.cporte }}</td>
-            </tr>
-            <tr> </tr>
-            <tr>
-              <td>Destino: </td>
-              <td>{{ datos.0.destino }}</td>
-            </tr>
-            <tr> </tr>
-            <tr>
-              <td>Estado: </td>
-              <td>{{ datos.0.estado }}</td>
-            </tr>
-            <tr> </tr>
-            <tr>
-              <td>Origen: </td>
-              <td>{{ datos.0.origen }}</td>
-            </tr>
-            <tr> </tr>
-            <tr>
-              <td>Sello: </td>
-              <td>{{ datos.0.sello }}</td>
-            </tr>
-           
-           
-        </table>
-           
+            <table border="1" style="color:white; border-style: hidden; max-width: 350px;">
+              <tr>
+                <td>Fecha de salida: </td>
+                <td>{{ datos.0.fecha }}</td>
+              </tr>
+              <tr>
+                <td>Hora de salida: </td>
+                <td>{{ datos.0.hora }}</td>
+              </tr>
+              <tr>
+                <td>Camión: </td>
+                <td>{{ datos.0.camion }}</td>
+              </tr>
+              <tr>
+                <td>Chofer: </td>
+                <td>{{ datos.0.chofer }}</td>
+              </tr>
+              <tr>
+                <td>Cliente: </td>
+                <td>{{ datos.0.cliente }}</td>
+              </tr>
+              <tr>
+                <td>Cporte: </td>
+                <td>{{ datos.0.cporte }}</td>
+              </tr>
+              <tr>
+                <td>Destino: </td>
+                <td>{{ datos.0.destino }}</td>
+              </tr>
+              <tr>
+                <td>Estado: </td>
+                <td>{{ datos.0.estado }}</td>
+              </tr>
+              <tr>
+                <td>Origen: </td>
+                <td>{{ datos.0.origen }}</td>
+              </tr>
+              <tr>
+                <td>Sello: </td>
+                <td>{{ datos.0.sello }}</td>
+              </tr>
+              <tr>
+                <td>Fecha de llegada: </td>
+                <td>{{ datos.0.fecha }}</td>
+              </tr>
+              <tr>
+                <td>Hora de llegada: </td>
+                <td>{{ datos.0.hora }}</td>
+              </tr>
+            </table>
           </div>
         </div>
         <div class="monitoreo_contenedor_botones">
-          <a href="#" class="boton_tiempo" style="width: 40%;">Tiempo Transcurrido</a>
+          <a class="boton_tiempo" style="width: 40%;">Tiempo Transcurrido: <span id="tiempoTranscurrido">00:00</span></a>
           <a style="width: 30%;"></a>
-          <a href="/viajes/estados" class="boton_regresar"style="width: 30%;">Regresar</a>
+          <a href="/viajes/estados" class="boton_regresar" style="width: 30%;">Regresar</a>
         </div>
       </div>
     </section>

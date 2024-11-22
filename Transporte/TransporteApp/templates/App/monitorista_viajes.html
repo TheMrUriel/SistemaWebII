@@ -19,11 +19,22 @@
  
             <div class="viajes_contenedor_viaje">
                 <div class="viajes_contenedor_imagen">
-                    <p>Aquí va una imagen</p>
+                    <div class="viajes_contenedor_imagen">
+                        {% if viaje2.link_imagen %} 
+                        <img src="{{ viaje2.link_imagen }}" alt="Evidencia del viaje"
+                            style="max-width: 200px; margin: 0 auto; max-height: 200px; display: block; object-fit: contain; border-radius: 8px;">
+                        {% else %}
+                        <p>Viaje no iniciado</p>
+                        {% endif %}
+                    </div>
                 </div>
                 <div class="viajes_contenedor_informacion">
-                    <p class="viajes_informacion"><strong>Titulo: </strong>
-                    <label> {{ viaje2.chofer }}</label>
+                    <p class="viajes_informacion">
+                        <strong>Unidad:</strong> {{ viaje2.camion }} <br>
+                        <strong>Chofer:</strong> {{ viaje2.chofer }} <br>
+                        <strong>Origen:</strong> {{ viaje2.origen }} <br>
+                        <strong>Destino:</strong> {{ viaje2.destino }} <br>
+                        <strong>Cliente:</strong> {{ viaje2.cliente }}
                     </p>
                 </div>
                 <div class="viajes_contenedor_boton">

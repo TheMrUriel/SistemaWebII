@@ -1,14 +1,19 @@
-{% extends 'conex/Encabezado_chofer.html' %} 
+{% extends 'conex/Encabezado_chofer.html' %}
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {% load static %}
     <link rel="stylesheet" href="{% static 'TransporteApp/style.css' %}" />
     <title>Viajes</title>
+    <!-- Firebase Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js"></script>
 </head>
+
 <body>
     <section class="viajes_contenedor_principal">
         <div class="viajes_contenedor_titulo">
@@ -16,10 +21,16 @@
         </div>
         <div class="viajes_contenedor_contenido">
             {% for viaje in viajes %}
-            <div class="viajes_contenedor_viaje" data-chofer="{{ viaje.chofer }}"> 
+            <div class="viajes_contenedor_viaje" data-chofer="{{ viaje.chofer }}">
                 <div class="viajes_contenedor_imagen">
-                    <p>Aquí va una imagen</p>
+                    {% if viaje.link_imagen %}
+                    <img src="{{ viaje.link_imagen }}" alt="Evidencia del viaje"
+                        style="max-width: 200px; margin: 0 auto; max-height: 200px; display: block; object-fit: contain; border-radius: 8px;">
+                    {% else %}
+                    <p>Viaje no iniciado</p>
+                    {% endif %}
                 </div>
+
                 <div class="viajes_contenedor_informacion">
                     <p class="viajes_informacion">
                         <strong>Unidad:</strong> {{ viaje.camion }} <br>
@@ -29,12 +40,80 @@
                     </p>
                 </div>
                 <div class="viajes_contenedor_boton">
-                    <a href="/evidencia/{{ viaje.id }}" class="viajes_boton_noiniciado">Ver detalles</a>
+                    {% if viaje.estado == "en curso" %}
+                    <button class="viajes_boton_noiniciado" onclick="confirmarTerminacion('{{ viaje.chofer }}')">Terminar
+                        viaje
+                    </button>
+                    {% elif viaje.estado == "asignado" %}
+                    <a href="/viajes/disponible/evidencia?id={{ viaje.id }}" class="disponible_boton_aceptar">Iniciar
+                        viaje</a>
+                    {% elif viaje.estado == "terminado" %}
+                    <a class="disponible_boton_aceptado">Viaje
+                        Terminado</a>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}
         </div>
     </section>
+
+    <!-- Firebase Logic -->
+    <script>
+        // Configuración de Firebase
+        const firebaseConfig2 = {
+            apiKey: "AIzaSyCDdHMlS8qfiiVfdFvQIe3GoiZVssLCkMM",
+            authDomain: "tgvg-foraneos.firebaseapp.com",
+            databaseURL: "https://tgvg-foraneos.firebaseio.com",
+            projectId: "tgvg-foraneos",
+            storageBucket: "tgvg-foraneos.appspot.com",
+            messagingSenderId: "230877081732",
+            appId: "1:230877081732:web:b78113f20ad5cb699412d1",
+            measurementId: "G-KFXQZZJCJJ"
+        };
+
+        // Inicializar Firebase
+        const app2 = firebase.initializeApp(firebaseConfig2);
+        const db2 = firebase.firestore(app2);
+
+        // Función para confirmar la terminación del viaje
+        async function confirmarTerminacion(chofer) {
+        const confirmacion = confirm("¿Deseas finalizar el viaje?");
+        if (confirmacion) {
+            try {
+                // Buscar el viaje con estado "en curso" para el chofer especificado
+                const viajesRef = db2.collection("viajes2");
+                const querySnapshot = await viajesRef
+                    .where("chofer", "==", chofer)
+                    .where("estado", "==", "en curso")
+                    .limit(1)
+                    .get();
+
+                if (querySnapshot.empty) {
+                    alert("No se encontró un viaje en curso para este chofer.");
+                    return;
+                }
+
+                // Obtener el primer documento que cumple los criterios
+                const viajeDoc = querySnapshot.docs[0];
+                const viajeId = viajeDoc.id;
+
+                // Actualizar el estado del viaje
+                await viajesRef.doc(viajeId).update({
+                    estado: "terminado",
+                    fecha_llegada: new Date().toISOString().split("T")[0],
+                    hora_llegada: new Date().toTimeString().split(" ")[0],
+                });
+
+                alert("Viaje terminado exitosamente.");
+                location.reload(); // Recargar la página para reflejar los cambios
+            } catch (error) {
+                console.error("Error al terminar el viaje:", error);
+                alert("Ocurrió un error al finalizar el viaje. Por favor, intenta de nuevo.");
+            }
+        }
+    }
+    </script>
 </body>
+
 </html>
 {% endblock %}

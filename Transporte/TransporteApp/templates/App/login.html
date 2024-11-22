@@ -44,7 +44,7 @@
               if (tipoUsuario === 1) {
                 window.location.href = "/menu/monitorista";
                 } else if (tipoUsuario === 3) {
-                  window.location.href = "/menu/chofer";
+                  window.location.href = `/menu/chofer?id=${id}`;
               } else {
                 alert("Tipo de usuario no válido");
               }
@@ -150,9 +150,9 @@
                     const tipoUsuario = doc.data().tipo;
                     const id = doc.data().uid;
                     if (tipoUsuario === 1) {
-                      window.location.href = "/menuMonitorista";
+                      window.location.href = "/menu/monitorista";
                     } else if (tipoUsuario === 3) {
-                      window.location.href = `/menuChofer/?id=${id}`;
+                      window.location.href = `/menu/chofer?id=${id}`;
                     } else {
                       // Manejar otros tipos de usuario o errores
                       alert("Tipo de usuario no válido");

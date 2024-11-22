@@ -469,6 +469,21 @@ body {
   transform: scale(0.96);
 }
 
+.viajes_imagen {
+  max-width: 100%; /* Limita el ancho al 100% del contenedor */
+  max-height: 200px; /* Ajusta la altura máxima */
+  display: block;
+  margin: 0 auto;
+  object-fit: contain; /* Escala la imagen proporcionalmente */
+  border-radius: 8px;
+}
+
+.viajes_contenedor_imagen {
+  max-width: 300px; /* Ancho máximo del contenedor */
+  height: auto;
+  /*margin: 0 auto; /* Centra el contenedor */
+  overflow: hidden; /* Evita que sobresalga el contenido */
+}
 /* ----------------------------------------------------------------------------------
                                     
                             CHOFER - SUBIR EVIDENCIA
@@ -540,6 +555,49 @@ body {
 .evidencia_contenedor_boton_enviar {
   display: flex;
   justify-content: space-evenly;
+}
+
+.boton_seleccionar {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff; /* Color de fondo */
+  color: #fff; /* Color del texto */
+  border: none;
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer;
+}
+
+.boton_seleccionar input[type="file"] {
+  display: none; /* Ocultar el input original */
+}
+
+.evidencia_contenedor_formulario_inputs {
+  display: flex;
+  flex-direction: column; /* Alinea los elementos en columna */
+  align-items: center; /* Centra horizontalmente */
+}
+
+.boton_seleccionar {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff; 
+  color: #fff; 
+  border: none;
+  border-radius: 5px; 
+  cursor: pointer;
+  text-align: 1  center; /* Centra el texto dentro del botón */
+  margin-bottom: 10px; /* Espacio entre el botón y la imagen */
+}
+
+.boton_seleccionar input[type="file"] {
+  display: none; 
+}
+
+#preview {
+  max-width: 300px; 
+  display: block; /* La imagen se comporta como un bloque para que el margen automático funcione */
+  margin-left: auto;
+  margin-right: auto; /* Centra la imagen horizontalmente */
 }
 
 /* ----------------------------------------------------------------------------------
