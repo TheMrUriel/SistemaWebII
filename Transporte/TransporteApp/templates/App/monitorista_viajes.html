@@ -39,19 +39,19 @@
                 </div>
                 <div class="viajes_contenedor_boton">
                     {% if viaje2.estado == 'asignado' %}
-                        <a href="/viajes/informacion?dato_estatico={{ viaje2.chofer }}" class="viajes_boton_noiniciado">
+                        <a href="/viajes/informacion?dato_estatico={{ viaje2.cporte}}" class="viajes_boton_noiniciado">
                             No iniciado
                         </a>
                     {% elif viaje2.estado == 'en curso' %}
-                        <a href="/viajes/informacion?dato_estatico={{ viaje2.chofer }}" class="viajes_boton_encurso">
+                        <a href="/viajes/informacion?dato_estatico={{ viaje2.cporte}}" class="viajes_boton_encurso">
                             En curso
                         </a>
                     {% elif viaje2.estado == 'terminado' %}
-                        <a href="/viajes/informacion?dato_estatico={{ viaje2.chofer }}" class="viajes_boton_completado">
+                        <a href="/viajes/informacion?dato_estatico={{ viaje2.cporte}}" class="viajes_boton_completado">
                             Completado
                         </a>
                     {% else %}
-                        <a href="/viajes/informacion?dato_estatico={{ viaje2.chofer }}" class="viajes_boton_default">
+                        <a href="/viajes/informacion?dato_estatico={{ viaje2.cporte}}" class="viajes_boton_default">
                             Estado Desconocido
                         </a>
                     {% endif %}

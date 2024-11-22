@@ -210,7 +210,7 @@ def viaje_info(request):
     Vista para obtener y renderizar documentos de la colección 'viajes2' filtrados por nombres.
     """
     dato_estatico = request.GET.get('dato_estatico')
-    datos = obtener_documentos('viajes2', filtros=[('chofer', '==', dato_estatico)])
+    datos = obtener_documentos('viajes2', filtros=[('cporte', '==', dato_estatico)])
     context3 = {'datos': datos}
     return render(request, 'App/monitorista_info_viaje.html', context3)
 
